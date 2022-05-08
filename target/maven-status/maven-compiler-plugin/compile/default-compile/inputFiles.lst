@@ -1,7 +1,8 @@
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/exception/GlobalExceptionHandler.java
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/entity/Employee.java
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/controller/EmployeeController.java
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/exception/ResourceNotFoundException.java
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/exception/ErrorDetails.java
-/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/repository/EmployeeRepository.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/example/testingweb/HomeController.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/exception/GlobalExceptionHandler.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/entity/Employee.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/repository/EmployeeRepository.java
 /Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/SpringbootApplication.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/exception/ResourceNotFoundException.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/controller/EmployeeController.java
+/Users/jojo/Documents/Frankfurt/ProgrammingExerciseBackend/src/main/java/com/springboot/exception/ErrorDetails.java
