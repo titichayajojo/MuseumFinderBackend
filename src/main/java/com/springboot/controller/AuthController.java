@@ -39,7 +39,7 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/signin")
+    @PostMapping("/userLogin")
     public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));
@@ -52,7 +52,7 @@ public class AuthController {
         return new ResponseEntity<>("User signed-in successfully!.\n" + user, HttpStatus.OK);
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/guest/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) throws ParseException {
 
         // add check for username exists in a DB
