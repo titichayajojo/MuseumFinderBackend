@@ -17,6 +17,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.json.JSONObject;
+
+import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDateTime;
 
 @Configuration
 @EnableWebSecurity
@@ -41,6 +45,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authenticated()
                 .and()
                 .httpBasic();
+
+        //Exception handling configuration
+
+        http
+                .exceptionHandling()
+                .authenticationEntryPoint((request, response, e) ->
+                {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.getWriter().write(new JSONObject()
+                            .put("timestamp", LocalDateTime.now())
+                            .put("message", "Access denied")
+                            .toString());
+                });
     }
 
     @Override
