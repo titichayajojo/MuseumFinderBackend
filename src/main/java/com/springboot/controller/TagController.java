@@ -61,7 +61,7 @@ public class TagController {
 
         tagRepository.delete(tag);
         Map < String, Boolean > response = new HashMap < > ();
-        response.put(tag + " is deleted", Boolean.TRUE);
+        response.put(tag.getName() + " is deleted", Boolean.TRUE);
         return response;
     }
 }
