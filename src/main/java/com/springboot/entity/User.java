@@ -1,8 +1,10 @@
 package com.springboot.entity;
 
 import lombok.Data;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -24,11 +26,13 @@ public class User {
     private String email;
     private String password;
     private int zipCode;
+    private ArrayList<String> tags;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+
     private Set<Role> roles;
 }
 

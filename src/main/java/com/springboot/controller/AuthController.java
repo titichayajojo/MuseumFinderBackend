@@ -1,6 +1,7 @@
 package com.springboot.controller;
 
 import com.springboot.entity.Role;
+import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 import com.springboot.payload.LoginDto;
 import com.springboot.payload.SignUpDto;
@@ -76,6 +77,7 @@ public class AuthController {
         user.setUsername(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+        user.setTags(signUpDto.getTags());
 
         String role = signUpDto.getRole();
         Role roles = role.equals("admin")? roleRepository.findByName("ROLE_ADMIN").get() : roleRepository.findByName("ROLE_USER").get();

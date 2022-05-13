@@ -2,6 +2,7 @@ package com.springboot.payload;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Data
@@ -14,4 +15,5 @@ public class SignUpDto {
     private String password;
     private String role;
     private int zipCode;
+    private ArrayList<String> tags;
 }
