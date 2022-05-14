@@ -41,7 +41,7 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/userLogin")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto){
+    public ResponseEntity<User> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));
 
@@ -50,7 +50,7 @@ public class AuthController {
         String usernameOrEmail = loginDto.getUsernameOrEmail().toString();
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail,usernameOrEmail).get();
 
-        return new ResponseEntity<>("User signed-in successfully!.\n" + user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/guest/signup")
@@ -85,7 +85,7 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return new ResponseEntity<>("User registered successfully\n" + user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
 }
