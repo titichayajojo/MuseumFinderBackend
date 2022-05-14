@@ -93,8 +93,6 @@ public class UserController {
         } else {
             username = principal.toString();
         }
-        System.out.println("HEHE");
-        System.out.println(username);
         User user = userRepository.findByUsernameOrEmail(username,username).get();
         return user;
     }
