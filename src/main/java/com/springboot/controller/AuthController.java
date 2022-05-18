@@ -77,7 +77,6 @@ public class AuthController {
         user.setUsername(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
-        user.setTags(signUpDto.getTags());
 
         String role = signUpDto.getRole();
         Role roles = role.equals("admin")? roleRepository.findByName("ROLE_ADMIN").get() : roleRepository.findByName("ROLE_USER").get();
