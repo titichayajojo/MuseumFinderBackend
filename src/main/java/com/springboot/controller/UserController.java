@@ -33,52 +33,9 @@ public class UserController {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
-        if(userDetails.getTags() != null) user.setTags(userDetails.getTags());
         if(userDetails.getFirstName() != null) user.setFirstName(userDetails.getFirstName());
         if(userDetails.getLastName() != null) user.setLastName(userDetails.getLastName());
 
-        final User updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
-    }
-
-    @GetMapping("/user/users/tags/{id}")
-    public ResponseEntity<ArrayList<String>> getAllTagsByUserId(@PathVariable(value = "id") Long userId) throws ResourceNotFoundException{
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
-        ArrayList<String> tags = user.getTags();
-        return ResponseEntity.ok(tags);
-    }
-
-    @PutMapping("/user/users/tags/{id}")
-    public ResponseEntity<User> addUserTagByUserId(@PathVariable(value = "id") Long userId,
-                                                   @Valid @RequestBody User userDetails) throws ResourceNotFoundException{
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResolutionException("User not found for this id :: " + userId));
-        ArrayList<String> userTags = user.getTags();
-        ArrayList<String> newTags = userDetails.getTags();
-
-        for(String tag : newTags){
-            if(!userTags.contains(tag)) userTags.add(tag);
-        }
-        user.setTags(userTags);
-
-        final User updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
-    }
-
-    @DeleteMapping("/user/users/tags/{id}")
-    public ResponseEntity<User> deleteUserTagByUserId(@PathVariable(value = "id") Long userId,
-                                                      @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResolutionException("User not found for this id :: " + userId));
-
-        ArrayList<String> userTags = user.getTags();
-        ArrayList<String> deleteTags = userDetails.getTags();
-
-        for(String tag: deleteTags){
-            userTags.remove(tag);
-        }
-        user.setTags(userTags);
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }
