@@ -29,7 +29,7 @@ public class UserControllerUI {
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
 
         User user = userController.getCurrentLoggedInUserProfile();
-        model.addAttribute("username", user.getUsername());
+        model.addAttribute("user", user);
 
-        return "user_profile.html";
+        return "userProfile.html";
     }}
