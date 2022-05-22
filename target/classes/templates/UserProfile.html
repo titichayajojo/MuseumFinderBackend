@@ -10,12 +10,23 @@
       />
     </head>
     <body>
+
+    <div class="navigation-bar">
+      <a href="/">Home</a>
+      <a href="/">About</a>
+      <div class="search-container">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><img th:src="@{images/search.png}"><i class="search-button"></i></button>
+      </div>
+    </div>
+
       <div class="container">
         <div class="profile-card">
           <img class="profile-img" width="150px" th:src="@{images/profile.jpg}" alt="profile picture">
           <h4 th:text="${user.firstName} + ' ' + ${user.lastName}"></h4>
           <p style="color:#999999;" th:text="${user.email}"></p>
         </div>
+
         <div class="profile-details">
           <h1 style="padding-bottom:40px; padding-top: 10%">Profile</h1>
             <div class="title-info" >Full name
@@ -32,6 +43,7 @@
           </div>
         </div>
       </div>
+
     </body>
   </html>
 </html>
