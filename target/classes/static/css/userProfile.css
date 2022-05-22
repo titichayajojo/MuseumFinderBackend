@@ -20,8 +20,7 @@ body{
     float:left;
     padding-top: 10%;
     padding-right: 5%;
-    border-right: solid;
-    border-color: #e1e2e3;
+    padding-left: 30%;
 }
 .profile-img{
     border-radius: 50%;
