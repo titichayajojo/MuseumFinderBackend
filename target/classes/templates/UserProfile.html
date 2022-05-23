@@ -4,21 +4,13 @@
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>User Profile Page</title>
-      <link
-        rel="stylesheet"
-        href="css/userProfile.css"
-      />
+      <link rel="stylesheet" th:href="@{/css/userProfile.css}">
+      <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+
     </head>
     <body>
 
-    <div class="navigation-bar">
-      <a href="/">Home</a>
-      <a href="/">About</a>
-      <div class="search-container">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><img th:src="@{images/search.png}"><i class="search-button"></i></button>
-      </div>
-    </div>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
 
       <div class="container">
         <div class="profile-card">
