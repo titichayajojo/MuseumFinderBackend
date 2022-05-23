@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Path;
@@ -18,7 +19,7 @@ import java.lang.module.ResolutionException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api")
 public class UserController {
     @Autowired
@@ -27,9 +28,9 @@ public class UserController {
     @GetMapping("/admin/users/info")
     public List<User> getAllUsers() { return userRepository.findAll(); }
 
-    @PutMapping("/user/users/info/{id}")
-    public ResponseEntity<User> updateUserById(@PathVariable(value = "id") Long userId,
-                                                   @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
+    @PostMapping("/user/users/info/{id}")
+    public String updateUserById(@PathVariable(value = "id") Long userId,
+                                                   @Valid User userDetails) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
@@ -37,7 +38,7 @@ public class UserController {
         if(userDetails.getLastName() != null) user.setLastName(userDetails.getLastName());
 
         final User updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
+        return "redirect:/user-profile";
     }
 
     @GetMapping("/user/info")

@@ -6,7 +6,6 @@
       <title>User Profile Page</title>
       <link rel="stylesheet" th:href="@{/css/userProfile.css}">
       <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-
     </head>
     <body>
 
@@ -21,9 +20,14 @@
 
         <div class="profile-details">
           <h1 style="padding-bottom:40px; padding-top: 10%">Profile</h1>
-            <div class="title-info" >Full name
-              <div style="color:black; font-size: medium;" th:text="${user.firstName} + ' ' + ${user.lastName}"></div>
+          <div>
+            <div class="title-info" style="display: inline-block; padding-right:10%">First name
+              <div type="text" id="divFirstName" style="color:black; font-size: medium;" th:text="${user.firstName}"></div>
             </div>
+          <div class="title-info" style="display: inline-block">Last name
+            <div style="color:black; font-size: medium;" th:text="${user.lastName}"></div>
+          </div>
+          </div>
           <div class="title-info">Email
             <div class="info" th:text="${user.email}"></div>
           </div>
@@ -33,9 +37,11 @@
           <div class="title-info">Zip code
             <div class="info" th:text="${user.zipCode}"></div>
           </div>
+          <button id="edit-btn" type="submit" onclick="window.location='edit-user-profile'">EDIT</button>
         </div>
       </div>
 
     </body>
+
   </html>
 </html>

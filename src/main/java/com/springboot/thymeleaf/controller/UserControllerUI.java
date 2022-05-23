@@ -25,6 +25,7 @@ public class UserControllerUI {
     @Autowired
     UserController userController;
 
+    private String firstNameField;
     @RequestMapping("/user-profile")
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
 
@@ -32,4 +33,14 @@ public class UserControllerUI {
         model.addAttribute("user", user);
 
         return "userProfile.html";
-    }}
+    }
+
+    @RequestMapping("/edit-user-profile")
+    public String editUserProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
+
+        User user = userController.getCurrentLoggedInUserProfile();
+        model.addAttribute("user", user);
+
+        return "editUserProfile.html";
+    }
+}
