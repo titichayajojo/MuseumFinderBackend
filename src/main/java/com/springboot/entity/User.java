@@ -1,6 +1,8 @@
 package com.springboot.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import java.util.Date;
 import java.util.Set;
 
 @Data
+@Setter
+@Getter
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"username"}),
