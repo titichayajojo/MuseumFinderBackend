@@ -17,10 +17,14 @@
         <a href="/">Home</a>
         <a href="/">About</a>
         <div class="search-container">
-                <input type="text" placeholder="Search.." name="search">
-            <button type="submit">
+            <form action="#" method="post" th:action="@{/museums}" th:object="${museums}">
+                <input type="text" placeholder="Search.." name="search" th:name="keyword"  >
+                <button type="submit">
                     <img th:src="@{/images/search.png}">
-                    <i class="search-button"></i></button>
+                    <i class="search-button"></i>
+                </button>
+            </form>
+
 
         </div>
     </div>

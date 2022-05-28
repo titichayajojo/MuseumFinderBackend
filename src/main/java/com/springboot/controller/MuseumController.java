@@ -101,7 +101,7 @@ public class MuseumController {
         return ResponseEntity.ok(savedMuseum);
     }
 
-    @GetMapping("/museums/search/{keyword}")
+    @PostMapping("/museums/search/{keyword}")
     public ResponseEntity<?> searchByKeyword(@PathVariable (value = "keyword") String keyword){
         List<Museum> museums = museumRepository.findByKeyword(keyword);
 

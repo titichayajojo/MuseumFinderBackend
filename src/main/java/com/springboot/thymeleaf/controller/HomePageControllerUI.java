@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -33,7 +34,7 @@ public class HomePageControllerUI {
     MuseumController museumController;
 
     @RequestMapping("/")
-    public String HomePage(HttpServletRequest request, Model model){
+    public String HomePage(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
 
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
@@ -42,11 +43,19 @@ public class HomePageControllerUI {
     }
 
     @RequestMapping(value = "/museums/{tag}", method = GET)
-    public String HomePage(HttpServletRequest request, Model model, @PathVariable("tag") String tag) throws ResourceNotFoundException {
+    public String HomePageByTag(HttpServletRequest request, Model model, @PathVariable("tag") String tag) throws ResourceNotFoundException {
 
         List<Museum> museums = (List<Museum>) museumController.getMuseumsByTag(tag).getBody();
         model.addAttribute("museums", museums);
         model.addAttribute("tag", tag);
+
+        return "homePage.html";
+    }
+
+    @RequestMapping(value = "/museums")
+    public String HomePageByKeyword(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
+        List<Museum> museums = (List<Museum>) museumController.searchByKeyword(keyword).getBody();
+        model.addAttribute("museums", museums);
 
         return "homePage.html";
     }
