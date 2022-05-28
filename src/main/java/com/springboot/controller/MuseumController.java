@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -89,5 +90,14 @@ public class MuseumController {
         String fileName = museum.getImageURL();
         String url = "/museum-images/" + museumId + "/" + fileName;
         return ResponseEntity.ok(url);
+    }
+
+    @PostMapping("/museums/tags/{id}")
+    public ResponseEntity<?> updateMuseumTagsById(@PathVariable(value = "id") Long museumId, @Valid @RequestBody ArrayList<String> tags){
+        Museum museum = museumRepository.getById(museumId);
+        museum.setTags(tags);
+
+        Museum savedMuseum = museumRepository.save(museum);
+        return ResponseEntity.ok(savedMuseum);
     }
 }
