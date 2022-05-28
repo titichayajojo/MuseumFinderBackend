@@ -5,20 +5,46 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Museum</title>
     <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-
+    <link rel="stylesheet" th:href="@{/css/museum.css}">
 </head>
 <body>
 <div th:insert="topNavigationBar :: navigationBar"></div>
 
 <div>
-    <div id= "name" th:text="${museum.name}" />
-    <div id= "email" th:text="${museum.email}" />
-    <div id= "phoneNumber" th:text="${museum.phoneNumber}" />
-    <div id= "description" th:text="${museum.description}" />
-    <div id= "openingHours" th:text="${museum.openingHours}" />
-    <div id= "address" th:text="${museum.address}" />
+    <div class="header">
+        <div id= "name" th:text="${museum.name}" />
+        <div class="tags-container">
+            <form action="#" method="get" th:each="tag: ${museum.tags}" th:action="@{/museums/{tag}(tag=${tag})}" th:object="${museums}">
+                <button id="tag"  th:text="${tag}"></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img id="image" th:src="@{${'/museum-images/' + museum.id + '/' + museum.imageURL}}"/>
+    </div>
+
+    <div class="description-container">Description
+        <div id= "description" th:text="${museum.description}" />
+    </div>
+
+    <div class="openingHours-container">Opening Hours
+        <div id= "openingHours" th:text="${museum.openingHours}" />
+    </div>
+
+    <div class="email-container">Email:
+        <div id= "email" th:text="${museum.email}" />
+    </div>
+
+    <div class="phoneNumber-container">Phone number:
+        <div id= "phoneNumber" th:text="${museum.phoneNumber}" />
+    </div>
+
+    <div class="address-container">Location
+        <div id= "address" th:text="${museum.address}" />
+    </div>
+
     <div id= "exhibitions" th:text="${museum.exhibitions}" />
-    <div id= "tags" th:text="${museum.tags}" />
 </div>
 
 </body>

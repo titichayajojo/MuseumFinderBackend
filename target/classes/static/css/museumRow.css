@@ -35,7 +35,7 @@
 }
 
 #tags{
-    display: inline-block;
+    display: inline-block
 }
 
 #tags button{
@@ -52,3 +52,5 @@
 #tags button:hover{
     background-color: hsl(210,8%,75%);
 }
+
+
