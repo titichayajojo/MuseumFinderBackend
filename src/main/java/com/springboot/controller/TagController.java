@@ -47,6 +47,7 @@ public class TagController {
         if(tagRepository.existsByName(tag.getName())){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Tag already exist");
         }
+        tag.setName(tag.getName().toLowerCase());
         tagRepository.save(tag);
         return ResponseEntity.ok(tag);
     }
