@@ -55,4 +55,13 @@ public class UserController {
         return user;
     }
 
+    @PostMapping("/user/tags")
+    public  User editCurrentUserTags(@Valid @RequestBody User userDetails){
+        User user = this.getCurrentLoggedInUserProfile();
+        if(userDetails.getTags() != null){ user.setTags(userDetails.getTags()); }
+
+        final User updatedUser = userRepository.save(user);
+        return updatedUser;
+    }
+
 }

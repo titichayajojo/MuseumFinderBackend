@@ -30,6 +30,7 @@ public class User {
     private String email;
     private String password;
     private int zipCode;
+    private ArrayList<String> tags;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
