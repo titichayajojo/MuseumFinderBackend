@@ -1,6 +1,7 @@
 package com.springboot.controller;
 
 import com.springboot.entity.Employee;
+import com.springboot.entity.Museum;
 import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 import com.springboot.exception.ResourceNotFoundException;
@@ -19,11 +20,14 @@ import java.lang.module.ResolutionException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class UserController {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    MuseumController museumController;
 
     @GetMapping("/admin/users/info")
     public List<User> getAllUsers() { return userRepository.findAll(); }
@@ -62,6 +66,14 @@ public class UserController {
 
         final User updatedUser = userRepository.save(user);
         return updatedUser;
+    }
+
+    @GetMapping("/user/museums")
+    public List<Museum> getMuseumsFromCurrentUser(){
+        User user = this.getCurrentLoggedInUserProfile();
+        ArrayList<String> userTags = user.getTags();
+        List<Museum> museums = (List<Museum>) museumController.getMuseumsByTags(userTags).getBody();
+        return museums;
     }
 
 }
