@@ -9,7 +9,7 @@
 <body>
     <div class="museum-container" th:each="museum: ${museums}" th:fragment="museumInfo(museum)">
         <a th:href="@{/museum/{id}/(id=${museum.id})}">
-            <div class="museum-details" >
+            <div class="museum-details" th:style="'background-image:url(' + @{${'/museum-images/' + museum.id + '/' + museum.imageURL}} + ');'">
                 <div id= "name" th:text="${museum.name}" />
                 <div class="hidden" id= "address" th:text="${museum.address}" />
                 <div class="tags-container">

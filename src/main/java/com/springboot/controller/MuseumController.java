@@ -3,13 +3,17 @@ package com.springboot.controller;
 import com.springboot.entity.Museum;
 import com.springboot.exception.ResourceNotFoundException;
 import com.springboot.repository.MuseumRepository;
+import com.springboot.config.FileUploadUtil;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,5 +68,26 @@ public class MuseumController {
             }
         }
         return ResponseEntity.ok(overlapList);
+    }
+
+    @PostMapping("/museums/image/{id}")
+    public ResponseEntity<?> addImage(@PathVariable(value = "id") Long museumId, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        Museum museum = museumRepository.getById(museumId);
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        museum.setImageURL(fileName);
+
+        Museum savedMuseum = museumRepository.save(museum);
+        String uploadDir = "src/main/resources/static/museum-images/" + savedMuseum.getId();
+
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+
+        return ResponseEntity.ok(uploadDir);
+    }
+    @GetMapping("/museums/image/{id}")
+    public ResponseEntity<?> getImageById(@PathVariable(value = "id") Long museumId){
+        Museum museum = museumRepository.getById(museumId);
+        String fileName = museum.getImageURL();
+        String url = "/museum-images/" + museumId + "/" + fileName;
+        return ResponseEntity.ok(url);
     }
 }

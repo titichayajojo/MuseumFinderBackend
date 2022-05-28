@@ -29,6 +29,9 @@ public class Museum {
 
     private String address;
 
+    @Column(nullable = true, length = 64)
+    private String imageURL;
+
     private ArrayList<Long> exhibitions;
     private ArrayList<String> tags;
 }
