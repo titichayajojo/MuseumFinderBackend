@@ -26,3 +26,22 @@
 #name{
     font-size: x-large
 }
+
+#tags{
+    display: inline-block
+}
+
+#tags button{
+    background-color: hsl(210,8%,90%);
+    border: none;
+    border-radius: 4px;
+    margin-top: 20%;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+#tags button:hover{
+    background-color: hsl(210,8%,75%);
+}

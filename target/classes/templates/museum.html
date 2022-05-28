@@ -10,5 +10,16 @@
 <body>
 <div th:insert="topNavigationBar :: navigationBar"></div>
 
+<div>
+    <div id= "name" th:text="${museum.name}" />
+    <div id= "email" th:text="${museum.email}" />
+    <div id= "phoneNumber" th:text="${museum.phoneNumber}" />
+    <div id= "description" th:text="${museum.description}" />
+    <div id= "openingHours" th:text="${museum.openingHours}" />
+    <div id= "address" th:text="${museum.address}" />
+    <div id= "exhibitions" th:text="${museum.exhibitions}" />
+    <div id= "tags" th:text="${museum.tags}" />
+</div>
+
 </body>
 </html>

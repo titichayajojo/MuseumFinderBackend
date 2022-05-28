@@ -12,7 +12,11 @@
             <div class="museum-details" >
                 <div id= "name" th:text="${museum.name}" />
                 <div class="hidden" id= "address" th:text="${museum.address}" />
-                <div class="hidden" id= "tags" th:text="${museum.tags}" />
+                <div class="tags-container">
+                    <div class="hidden" id= "tags" th:each="tag: ${museum.tags}">
+                        <button class="hidden" th:text="${tag}"></button>
+                    </div>
+                </div>
             </div>
         </a>
     </div>
