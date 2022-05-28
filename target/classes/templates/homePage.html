@@ -38,6 +38,9 @@
     </div>
 
     <h1 id="museums-title">Museums</h1>
+    <form action="#" method="get" th:action="@{/}">
+        <button class="filter" th:if="${tag != null}" th:text="${tag}"></button>
+    </form>
     <div class="museums-list">
         <div class="museum-table" th:insert="museumRow :: museumInfo(museum)"></div>
     </div>

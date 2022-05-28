@@ -46,6 +46,7 @@ public class HomePageControllerUI {
 
         List<Museum> museums = (List<Museum>) museumController.getMuseumsByTag(tag).getBody();
         model.addAttribute("museums", museums);
+        model.addAttribute("tag", tag);
 
         return "homePage.html";
     }
