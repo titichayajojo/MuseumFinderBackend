@@ -21,7 +21,7 @@ public interface MuseumRepository extends JpaRepository<Museum, Long>, JpaSpecif
     @Query(value = " SELECT * FROM `springboot_demo`.`museums` WHERE `tags` LIKE %:tagName% ;", nativeQuery = true)
     List<Museum> findByTag(@Param("tagName")String tagName);
 
-    @Query(value = "select * from museums m where m.name like %:keyword% or m.tags like %:keyword%", nativeQuery = true)
+    @Query(value = "select * from museums m where m.name like %:keyword% or m.tags like %:keyword% or m.address like %:keyword%", nativeQuery = true)
     List<Museum> findByKeyword(@Param("keyword") String keyword);
     Boolean existsByName(String name);
 }
