@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Path;
 import javax.validation.Valid;
 import java.lang.module.ResolutionException;
@@ -70,10 +72,21 @@ public class UserController {
 
     @GetMapping("/user/museums")
     public List<Museum> getMuseumsFromCurrentUser(){
-        User user = this.getCurrentLoggedInUserProfile();
-        ArrayList<String> userTags = user.getTags();
-        List<Museum> museums = (List<Museum>) museumController.getMuseumsByTags(userTags).getBody();
-        return museums;
+        try {
+            User user = this.getCurrentLoggedInUserProfile();
+            ArrayList<String> userTags = user.getTags();
+            List<Museum> museums = (List<Museum>) museumController.getMuseumsByTags(userTags).getBody();
+            return museums;
+        }catch (Exception e){
+            return museumController.getAllMuseums();
+        }
+    }
+
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        SecurityContextHolder.clearContext();
+        return "logout successfully";
     }
 
 }

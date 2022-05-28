@@ -1,0 +1,28 @@
+.museum-container a{
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+
+}
+
+.museum-details{
+    position: relative;
+    top: 0;
+    background-color: grey;
+
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 2%;
+    padding-top: 10%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+}
+
+.hidden{
+    display: none;
+}
+.museum-container:hover .hidden{
+    display: block;
+}
+
+#name{
+    font-size: x-large
+}

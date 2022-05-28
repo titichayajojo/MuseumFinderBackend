@@ -25,5 +25,6 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/UserController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Exhibition.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Tag.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/thymeleaf/controller/HomePageControllerUI.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/thymeleaf/controller/UserControllerUI.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/config/MultipleEntryPointsSecurityConfig.java

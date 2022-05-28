@@ -1,8 +1,10 @@
 package com.springboot.thymeleaf.controller;
 
-import com.springboot.controller.UserController;
-import com.springboot.entity.User;
 
+import com.springboot.controller.MuseumController;
+import com.springboot.controller.UserController;
+import com.springboot.entity.Museum;
+import com.springboot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,31 +16,30 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URISyntaxException;
+import java.util.List;
 
 @Controller
-public class UserControllerUI {
+public class HomePageControllerUI {
 
     @Autowired
     UserController userController;
-    @RequestMapping("/user-profile")
-    public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
 
-        User user = userController.getCurrentLoggedInUserProfile();
-        model.addAttribute("user", user);
+    @RequestMapping("/")
+    public String HomePage(HttpServletRequest request, Model model){
 
-        return "userProfile.html";
+        List<Museum> museums = userController.getMuseumsFromCurrentUser();
+        model.addAttribute("museums", museums);
+
+        return "homePage.html";
     }
 
-    @RequestMapping("/edit-user-profile")
-    public String editUserProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
+    public String MuseumRow(HttpServletRequest request, Model model){
+        List<Museum> museums = userController.getMuseumsFromCurrentUser();
+        model.addAttribute("museums", museums);
 
-        User user = userController.getCurrentLoggedInUserProfile();
-        model.addAttribute("user", user);
-
-        return "editUserProfile.html";
+        return "museumRow.html";
     }
+
 }

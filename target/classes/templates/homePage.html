@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" th:href="@{/css/museumRow.css}">
+    <link rel="stylesheet" th:href="@{/css/homePage.css}">
+</head>
+<body>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
+
+    <div class="museums-list">
+        <div class="museum-table" th:insert="museumRow :: museumInfo(museum)"></div>
+    </div>
+
+</body>
+</html>

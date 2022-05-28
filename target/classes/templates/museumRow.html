@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Museum Row</title>
+    <link rel="stylesheet" th:href="@{/css/museumRow.css}">
+</head>
+<body>
+    <div class="museum-container" th:each="museum: ${museums}" th:fragment="museumInfo(museum)">
+        <a th:href="@{/museum/{id}/(id=${museum.id})}">
+            <div class="museum-details" >
+                <div id= "name" th:text="${museum.name}" />
+                <div class="hidden" id= "address" th:text="${museum.address}" />
+                <div class="hidden" id= "tags" th:text="${museum.tags}" />
+            </div>
+        </a>
+    </div>
+</body>
+</html>
