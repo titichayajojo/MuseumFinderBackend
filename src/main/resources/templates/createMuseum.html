@@ -5,27 +5,61 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Create Museum</title>
     <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" th:href="@{/css/createMuseum.css}">
 </head>
 <body>
 
     <div th:insert="topNavigationBar :: navigationBar"></div>
 
-    <h1>create new museum</h1>
+    <div style="margin-top:3%;">
+        <img src="/images/icons/home-plus.png" alt="pen icon" style="float:left; width:40px; margin-top: 20px;
+    margin-right: 10px;">
+        <h1 style="float:left";>Create new museum</h1>
+    </div>
 
-    <input type="text" placeholder="museum name">
-    <input type="email" placeholder="email">
-    <input type="text" placeholder="phoneNumber">
+    <div>
+        <div>
+            <div class="title" style="clear:both;">Museum Name</div>
+                <input class="input-field" type="text" placeholder="Museum name.." required="required">
+            <br>
+        </div>
 
-    <textarea id="description">description...</textarea>
-    <textarea id="openingHours">opening hours</textarea>
+        <div class="title">Email</div>
+        <input class="input-field" type="email" placeholder="Email.." required="required">
+        <br>
 
-    <textarea type="text" placeholder="address"></textarea>
+        <div class="title">Phone Number</div>
+        <input class="input-field" type="text" placeholder="Phone number.." required="required">
+        <br>
 
-<!--    add up to 3 tags-->
-    <input type="text" placeholder="tags">
+        <div class="title">Description</div>
+        <textarea class="input-field" id="description" placeholder="Description.." style="height=150px;"></textarea>
+        <br>
 
-    <input type="number" step="any" placeholder="latitude">
-    <input type="number" step="any" placeholder="longitude">
+        <div class="title">Opening hours</div>
+        <textarea class="input-field" id="openingHours" placeholder="Opening hours.."></textarea>
+        <br>
+
+        <div class="title">Address</div>
+        <textarea class="input-field" type="text" placeholder="Address.."></textarea>
+        <br>
+
+        <div class="title">Latitude</div>
+        <input class="input-field" type="number" step="any" placeholder="Latitude..">
+        <br>
+
+        <div class="title">Longitude</div>
+        <input class="input-field" type="number" step="any" placeholder="Longitude..">
+        <br>
+
+        <!--    add up to 3 tags-->
+        <div class="tags-container">
+            <div th:each="tag: ${tags}">
+                <button class="tag-button" th:text="${tag.name}"></button>
+            </div>
+        </div>
+
+    </div>
 
 
 </body>
