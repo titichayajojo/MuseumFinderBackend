@@ -55,18 +55,15 @@
   /*<![CDATA[*/
   function initMap() {
     // The location of the map
-    var shop = { lat: /*[[${museum.latitude}]]*/, lng: /*[[${museum.longitude}]]*/ };
+    var museum = { lat: /*[[${museum.latitude}]]*/, lng: /*[[${museum.longitude}]]*/ };
     var map = new google.maps.Map(
-      document.getElementById('map'), { zoom: 20, center: shop });
-    var marker = new google.maps.Marker({ position: shop, map: map });
+      document.getElementById('map'), { zoom: 20, center: museum });
+    var marker = new google.maps.Marker({ position: museum, map: map });
   }
 /*]]>*/
 </script>
-<<<<<<< HEAD
+
 <script  async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBnhw3pzsFD40rRTED-QGVYFdynD3jEaQ&callback=initMap" >
-=======
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb1VcXDa1BgYajxIBUnbhN608AGsd_xf8&callback=initMap">
->>>>>>> museumAPI
 </script>
 
 </body>
