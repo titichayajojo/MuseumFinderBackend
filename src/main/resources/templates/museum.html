@@ -6,6 +6,9 @@
     <title>Museum</title>
     <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
     <link rel="stylesheet" th:href="@{/css/museum.css}">
+
+    <!-- google map -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
 <div th:insert="topNavigationBar :: navigationBar"></div>
@@ -46,6 +49,21 @@
 
     <div id= "exhibitions" th:text="${museum.exhibitions}" />
 </div>
+
+<div id="map"></div>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  function initMap() {
+    // The location of the map
+    var shop = { lat: /*[[${museum.latitude}]]*/, lng: /*[[${museum.longitude}]]*/ };
+    var map = new google.maps.Map(
+      document.getElementById('map'), { zoom: 20, center: shop });
+    var marker = new google.maps.Marker({ position: shop, map: map });
+  }
+/*]]>*/
+</script>
+<script  async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBnhw3pzsFD40rRTED-QGVYFdynD3jEaQ&callback=initMap" >
+</script>
 
 </body>
 </html>

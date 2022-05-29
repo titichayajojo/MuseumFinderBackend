@@ -32,6 +32,9 @@ public class Museum {
     @Column(nullable = true, length = 64)
     private String imageURL;
 
+    private Float latitude;
+    private Float longitude;
+
     private ArrayList<Long> exhibitions;
     private ArrayList<String> tags;
 }

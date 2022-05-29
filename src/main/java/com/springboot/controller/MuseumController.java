@@ -108,4 +108,18 @@ public class MuseumController {
         return ResponseEntity.ok(museums);
     }
 
+    @PostMapping("/museums/details/{id}")
+    public ResponseEntity<?> updateMuseumById(@PathVariable(value = "id") Long museumId, @Valid @RequestBody Museum museumDetails){
+        Museum museum = museumRepository.getById(museumId);
+
+        if(museumDetails.getLatitude() != null){ museum.setLatitude(museumDetails.getLatitude());}
+        if(museumDetails.getLongitude() != null){ museum.setLongitude(museumDetails.getLongitude());}
+        if(museumDetails.getAddress() != null){museum.setAddress(museumDetails.getAddress());}
+        if(museumDetails.getOpeningHours() != null){museum.setOpeningHours(museumDetails.getOpeningHours());}
+
+        Museum savedMuseum = museumRepository.save(museum);
+
+        return ResponseEntity.ok(savedMuseum);
+    }
+
 }
