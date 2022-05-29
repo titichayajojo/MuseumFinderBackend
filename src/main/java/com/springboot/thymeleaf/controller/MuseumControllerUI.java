@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class MuseumControllerUI {
@@ -21,11 +22,17 @@ public class MuseumControllerUI {
     MuseumController museumController;
 
     @RequestMapping(value = "/museum/{id}", method = GET)
-    public String HomePage(HttpServletRequest request, Model model, @PathVariable("id") long id) throws ResourceNotFoundException {
+    public String MuseumByIdPage(HttpServletRequest request, Model model, @PathVariable("id") long id) throws ResourceNotFoundException {
 
         Museum museum = (Museum) museumController.getMuseumById(id).getBody();
         model.addAttribute("museum", museum);
 
         return "museum.html";
+    }
+
+    @RequestMapping(value = "/museum-add", method = GET)
+    public String CreateMuseumPage(HttpServletRequest request, Model model){
+
+        return "createMuseum.html";
     }
 }

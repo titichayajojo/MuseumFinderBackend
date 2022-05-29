@@ -75,7 +75,7 @@ public class UserController {
         try {
             User user = this.getCurrentLoggedInUserProfile();
             ArrayList<String> userTags = user.getTags();
-            List<Museum> museums = (List<Museum>) museumController.getMuseumsByTags(userTags).getBody();
+            List<Museum> museums = (List<Museum>) museumController.sortMuseumsByTags(userTags).getBody();
             return museums;
         }catch (Exception e){
             return museumController.getAllMuseums();
@@ -88,5 +88,6 @@ public class UserController {
         SecurityContextHolder.clearContext();
         return "logout successfully";
     }
+
 
 }

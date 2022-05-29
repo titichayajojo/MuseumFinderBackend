@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Create Museum</title>
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+</head>
+<body>
+
+    <div th:insert="topNavigationBar :: navigationBar"></div>
+
+    <h1>create new museum</h1>
+
+    <input type="text" placeholder="museum name">
+    <input type="email" placeholder="email">
+    <input type="text" placeholder="phoneNumber">
+
+    <textarea id="description">description...</textarea>
+    <textarea id="openingHours">opening hours</textarea>
+
+    <textarea type="text" placeholder="address"></textarea>
+
+<!--    add up to 3 tags-->
+    <input type="text" placeholder="tags">
+
+    <input type="number" step="any" placeholder="latitude">
+    <input type="number" step="any" placeholder="longitude">
+
+
+</body>
+</html>

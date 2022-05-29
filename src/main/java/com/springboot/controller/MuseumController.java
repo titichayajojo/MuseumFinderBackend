@@ -71,6 +71,30 @@ public class MuseumController {
         return ResponseEntity.ok(overlapList);
     }
 
+    @GetMapping("/museums/sort/tags")
+    public ResponseEntity<?> sortMuseumsByTags(@Valid @RequestBody ArrayList<String> tags){
+        List<Museum> museums = museumRepository.findAll();
+        ArrayList<Museum> sortedList = new ArrayList<Museum>();
+
+        //loop over each museum
+        for(Museum museum : museums){
+            //tag array for one museum
+            ArrayList<String> museumTags = museum.getTags();
+
+            //find the overlap of the tag array of museum and the input array
+            for(String userTag : tags){
+                //if tag is matched and museum is not in the list. We added to the beginning of the list
+
+                if(museumTags.contains(userTag) && !sortedList.contains(museum))
+                    sortedList.add(0,museum);
+                //if tag is matched and museum is not in the list. We added to the end of the list
+                else if(!museumTags.contains(userTag) && !sortedList.contains(museum))
+                    sortedList.add(museum);
+            }
+        }
+        return ResponseEntity.ok(sortedList);
+    }
+
     @PostMapping("/museums/image/{id}")
     public ResponseEntity<?> addImage(@PathVariable(value = "id") Long museumId, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         Museum museum = museumRepository.getById(museumId);
