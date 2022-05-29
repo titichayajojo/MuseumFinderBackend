@@ -1,0 +1,205 @@
+@import url('http://fonts.cdnfonts.com/css/chalkduster');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background:#181816;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+section{
+    position: absolute;
+    width: 80%;
+    border-radius: 40px;
+    box-shadow: 0 0 30px #955E00;
+}
+
+a{
+    text-decoration: none;
+}
+
+#loginSection{
+    height: 60%;
+    margin: 10rem 10rem;
+}
+
+#registerSection{
+    height: 70%;
+    margin: 8rem 10rem;
+}
+
+
+#leftHalf {
+    position: absolute;
+    float: left;
+    width: 50%;
+    left: 0;
+    height: 100%;
+}
+
+#leftHalf img{
+    border-radius: 40px 0 0 40px;
+}
+
+#rightHalf {
+    position: absolute;
+    float: right;
+    width: 50%;
+    right: 0;
+    height: 100%;
+}
+
+#rightHalf h1{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-size: 50px;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px #955E00;
+    text-align: center;
+}
+
+#rightHalf #form {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    align-content: flex-start;
+}
+
+#rightHalf #form .input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 25rem;
+}
+
+#rightHalf #form .input input{
+    padding: 15px;
+    font-size: 15px;
+    border: 1px solid #262936;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    margin-top: 8px;
+}
+
+label {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 3px;
+    margin-left: 16px;
+    -webkit-text-stroke: 0.3px #955E00;
+}
+
+#rightHalf #form .forget{
+    text-align: right;
+    margin-right: 75px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+#rightHalf #form .forget a{
+    color: #955E00;
+}
+
+#rightHalf #form button{
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+    font-size: 20px;
+    align-self: center;
+    margin-top: 1.5rem;
+    margin-right: 3rem;
+}
+
+#rightHalf #form button login:hover{
+    background-color: #955e00;
+    color: black;
+}
+
+#rightHalf footer{
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#rightHalf footer a{
+    color: #955E00;
+}
+
+.nav{
+    top: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.nav a{
+    display: block;
+    width: auto;
+    outline: 0;
+    text-align: center;
+    color: white;
+}
+
+.nav a h1{
+    font-family: 'Chalkduster', sans-serif;
+    font-size: 50px;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 2rem;
+    float: left;
+}
+
+.nav .menu{
+    font-family: "Arial", sans-serif;;
+    font-size: 30px;
+    -webkit-text-stroke: 0.5px #955E00;
+    padding: 5px 10px;
+    margin-left: 3rem;
+    margin-top: 2rem;
+    float: left;
+}
+
+.nav .nav_login a{
+    font-family: "Arial", sans-serif;;
+    font-size: 30px;
+    -webkit-text-stroke: 0.5px #955E00;
+    float: right;
+    margin-top: 2rem;
+    margin-right: 3rem;
+}
+
+.slider{
+    margin-top: 7rem;
+    width: 100%;
+    height: 520px;
+}
+.slider h2{
+    position: relative;
+    font-size: 45px;
+    font-family: "Arial", sans-serif;;
+    color: white;
+    -webkit-text-stroke: 0.5px #955E00;
+    margin-left: 8rem;
+}
+
+#leftHalf .backButton{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    font-size: 45px;
+    border-radius: 40px;
+    margin-top: 6px;
+    margin-left: 7px;
+    color: white;
+    -webkit-text-stroke: 1px #955E00;
+}
+
+#rightHalf #form .reset{
+    margin-top: 3.5rem;
+}

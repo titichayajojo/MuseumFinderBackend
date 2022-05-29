@@ -40,6 +40,7 @@ public class SecurityConfigAdmin extends WebSecurityConfigurerAdapter{
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/*").permitAll()
+                .antMatchers("/image/museum.png").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/admin/**").hasRole("ADMIN")
                 .antMatchers("/api/user/**").hasAnyRole("ADMIN","USER")

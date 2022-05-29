@@ -15,10 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -53,7 +50,7 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto signUpDto) throws ParseException {
 
         // add check for username exists in a DB
@@ -86,5 +83,25 @@ public class AuthController {
 
         return new ResponseEntity<>(user, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/register")
+    public String getRegisterPage(){
+        return "registerPage";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage(){
+        return "loginPage";
+    }
+
+    @GetMapping("/reset")
+    public String getResetPage(){
+        return "resetPassword";
+    }
+
+    @GetMapping("/main")
+    public String getMainPage(){
+        return "index";
     }
 }

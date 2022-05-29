@@ -5,7 +5,6 @@ com/springboot/entity/User.class
 com/springboot/controller/UserController.class
 com/springboot/example/testingweb/HomeController.class
 com/springboot/repository/EmployeeRepository.class
-com/springboot/thymeleaf/controller/UserControllerUI.class
 com/springboot/config/SecurityConfigAdmin.class
 com/springboot/entity/Role.class
 com/springboot/SpringbootApplication.class
