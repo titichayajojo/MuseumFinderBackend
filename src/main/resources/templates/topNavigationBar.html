@@ -5,15 +5,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Top navigation bar</title>
     <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 
     <div th:fragment="navigationBar" class="navigation-bar">
+        <div class="logo-container">
+            <img class= "appLogo" th:src="@{/images/icons/appLogo.png}">
+        </div>
+        <div class="appName">Museum Finder</div>
         <a href="/">Home</a>
         <a href="/">About</a>
         <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><img th:src="@{images/search.png}"><i class="search-button"></i></button>
+            <form action="#" method="post" th:action="@{/museums}" th:object="${museums}">
+                <input type="text" placeholder="Search.." name="search" th:name="keyword"  >
+                <button type="submit">
+                    <img th:src="@{/images/search.png}">
+                    <i class="search-button"></i>
+                </button>
+            </form>
+
+
         </div>
     </div>
 

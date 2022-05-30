@@ -1,6 +1,7 @@
 package com.springboot.controller;
 
 import com.springboot.entity.Employee;
+import com.springboot.entity.Museum;
 import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 import com.springboot.exception.ResourceNotFoundException;
@@ -13,17 +14,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Path;
 import javax.validation.Valid;
 import java.lang.module.ResolutionException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class UserController {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    MuseumController museumController;
 
     @GetMapping("/admin/users/info")
     public List<User> getAllUsers() { return userRepository.findAll(); }
@@ -54,5 +60,34 @@ public class UserController {
         User user = userRepository.findByUsernameOrEmail(username,username).get();
         return user;
     }
+
+    @PostMapping("/user/tags")
+    public  User editCurrentUserTags(@Valid @RequestBody User userDetails){
+        User user = this.getCurrentLoggedInUserProfile();
+        if(userDetails.getTags() != null){ user.setTags(userDetails.getTags()); }
+
+        final User updatedUser = userRepository.save(user);
+        return updatedUser;
+    }
+
+    @GetMapping("/user/museums")
+    public List<Museum> getMuseumsFromCurrentUser(){
+        try {
+            User user = this.getCurrentLoggedInUserProfile();
+            ArrayList<String> userTags = user.getTags();
+            List<Museum> museums = (List<Museum>) museumController.sortMuseumsByTags(userTags).getBody();
+            return museums;
+        }catch (Exception e){
+            return museumController.getAllMuseums();
+        }
+    }
+
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        SecurityContextHolder.clearContext();
+        return "logout successfully";
+    }
+
 
 }

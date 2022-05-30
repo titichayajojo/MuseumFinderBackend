@@ -24,8 +24,6 @@ public class UserControllerUI {
 
     @Autowired
     UserController userController;
-
-    private String firstNameField;
     @RequestMapping("/user-profile")
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
 
