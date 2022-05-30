@@ -1,10 +1,12 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/UserRepository.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/config/FileUploadUtil.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/RoleRepository.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/MuseumController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/service/UserService.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Museum.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/exception/ErrorDetails.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/EmployeeRepository.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/thymeleaf/controller/MuseumControllerUI.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/payload/LoginDto.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/EmployeeController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/User.java
@@ -12,7 +14,6 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/MuseumRepository.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/service/CustomUserDetailsService.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/ExhibitionRepository.java
-/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/example/testingweb/HomeController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/exception/ResourceNotFoundException.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/exception/GlobalExceptionHandler.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/config/SecurityConfigAdmin.java
