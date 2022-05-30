@@ -13,54 +13,76 @@
 
     <div style="margin-top:3%;">
         <img src="/images/icons/home-plus.png" alt="pen icon" style="float:left; width:40px; margin-top: 20px;
-    margin-right: 10px;">
+    margin-right: 10px; padding-left:2%">
         <h1 style="float:left";>Create new museum</h1>
     </div>
 
-    <div>
-        <div>
-            <div class="title" style="clear:both;">Museum Name</div>
-                <input class="input-field" type="text" placeholder="Museum name.." required="required">
-            <br>
-        </div>
+    <div class="container">
 
-        <div class="title">Email</div>
-        <input class="input-field" type="email" placeholder="Email.." required="required">
-        <br>
-
-        <div class="title">Phone Number</div>
-        <input class="input-field" type="text" placeholder="Phone number.." required="required">
-        <br>
-
-        <div class="title">Description</div>
-        <textarea class="input-field" id="description" placeholder="Description.." style="height=150px;"></textarea>
-        <br>
-
-        <div class="title">Opening hours</div>
-        <textarea class="input-field" id="openingHours" placeholder="Opening hours.."></textarea>
-        <br>
-
-        <div class="title">Address</div>
-        <textarea class="input-field" type="text" placeholder="Address.."></textarea>
-        <br>
-
-        <div class="title">Latitude</div>
-        <input class="input-field" type="number" step="any" placeholder="Latitude..">
-        <br>
-
-        <div class="title">Longitude</div>
-        <input class="input-field" type="number" step="any" placeholder="Longitude..">
-        <br>
-
-        <!--    add up to 3 tags-->
-        <div class="tags-container">
-            <div th:each="tag: ${tags}">
-                <button class="tag-button" th:text="${tag.name}"></button>
+        <form action="#" method="post" th:action="@{/museum-add/created}" th:object="${museum}" enctype="multipart/form-data">
+            <div>
+                <div class="title" style="clear:both;">Museum Name</div>
+                    <input class="input-field" type="text" placeholder="Museum name.." required="required" th:field="*{name}">
+                <br>
             </div>
-        </div>
 
+            <div class="title">Email</div>
+            <input class="input-field" type="email" placeholder="Email.." required="required" th:field="*{email}">
+            <br>
+
+            <div class="title">Phone Number</div>
+            <input class="input-field" type="text" placeholder="Phone number.." required="required" th:field="*{phoneNumber}">
+            <br>
+
+            <div class="title">Description</div>
+            <textarea class="input-field" id="description" placeholder="Description.." style="height=150px;" th:field="*{description}"></textarea>
+            <br>
+
+            <div class="title">Opening hours</div>
+            <textarea class="input-field" id="openingHours" placeholder="Opening hours.."  th:field="*{openingHours}"></textarea>
+            <br>
+
+            <div class="title">Address</div>
+            <textarea class="input-field" type="text" placeholder="Address.."  th:field="*{address}"></textarea>
+            <br>
+
+            <div class="title">Latitude</div>
+            <input class="input-field" type="number" step="any" placeholder="Latitude.."  th:field="*{latitude}">
+            <br>
+
+            <div class="title">Longitude</div>
+            <input class="input-field" type="number" step="any" placeholder="Longitude.."  th:field="*{longitude}">
+            <br>
+
+            <div class="tags-container">
+                <div th:each="tag, itemStat: ${tags}">
+                    <input type="checkbox"
+                           th:text="${tag.name}"
+                           th:value="${tag.name}"
+                           th:name="|tags[${itemStat.index}]|"
+                           class="tag-button"
+                           th:id="${tag.name}"
+                           th:field="*{tags[__${itemStat.index}__]}"
+                    ></input>
+                </div>
+            </div><br>
+
+            <div class="image-container">
+
+                <label>Image: </label>
+                <input type="file" name="image" accept="image/png, image/jpeg" />
+
+            </div><br>
+
+            <button type="submit">CREATE</button>
+        </form>
     </div>
 
+<script>
+
+
+
+</script>
 
 </body>
 </html>

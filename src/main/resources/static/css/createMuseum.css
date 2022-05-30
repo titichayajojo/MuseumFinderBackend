@@ -1,4 +1,4 @@
-body{
+.container{
     font-family: 'Inter', sans-serif;
     padding-right: 5%;
     padding-left: 2%;
@@ -26,14 +26,12 @@ body{
     border-radius: 4px;
     margin-top: 2%;
     margin-right: 1%;
-    margin-bottom: 10%;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
-    float:left;
 }
 
-.tag-button:hover{
-    background-color: hsl(210,8%,75%);
+.image-container{
+    clear: both;
 }

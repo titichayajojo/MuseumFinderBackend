@@ -9,9 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -40,7 +46,22 @@ public class MuseumControllerUI {
 
         List<Tag> tags = tagController.getAllTags();
         model.addAttribute("tags",tags);
-
+        model.addAttribute("museum", new Museum());
         return "createMuseum.html";
     }
+
+    @RequestMapping(value = "/museum-add/created", method = POST)
+    public String CreateMuseumMethod(HttpServletRequest request, Model model,Museum museumDetails ,@RequestParam("image") MultipartFile multipartFile) throws IOException {
+        List<String> tags = museumDetails.getTags();
+        while (tags.remove(null));
+        museumDetails.setTags((ArrayList<String>) tags);
+
+        Museum museum = (Museum) museumController.createMuseum(museumDetails).getBody();
+        museumController.addImage(museum.getId(),multipartFile);
+
+        model.addAttribute("museum", museum);
+
+        return "redirect:/museum/" + museum.getId();
+    }
+
 }
