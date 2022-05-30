@@ -13,11 +13,11 @@
 
     <div style="margin-top:3%;">
         <img src="/images/icons/home-plus.png" alt="pen icon" style="float:left; width:40px; margin-top: 20px;
-    margin-right: 10px; padding-left:2%">
+    margin-right: 10px; padding-left:25%">
         <h1 style="float:left";>Create new museum</h1>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-left: 30%;">
 
         <form action="#" method="post" th:action="@{/museum-add/created}" th:object="${museum}" enctype="multipart/form-data">
             <div>
@@ -74,7 +74,7 @@
 
             </div><br>
 
-            <button type="submit">CREATE</button>
+            <button type="submit" id="create-btn">CREATE</button>
         </form>
     </div>
 
