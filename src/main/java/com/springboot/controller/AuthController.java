@@ -4,6 +4,7 @@ import com.springboot.entity.Role;
 import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 import com.springboot.payload.LoginDto;
+import com.springboot.payload.ResetPasswordDto;
 import com.springboot.payload.SignUpDto;
 import com.springboot.repository.RoleRepository;
 import com.springboot.repository.UserRepository;
@@ -17,10 +18,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -85,23 +89,26 @@ public class AuthController {
 
     }
 
-    @GetMapping("/register")
-    public String getRegisterPage(){
-        return "registerPage";
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        SecurityContextHolder.clearContext();
+        return "logout successfully";
     }
 
-    @GetMapping("/login")
-    public String getLoginPage(){
-        return "loginPage";
+    @PostMapping("/user/reset-password")
+    public ResponseEntity<?> resetPassword(ResetPasswordDto resetPasswordDto){
+        try{
+            User user = userRepository.findByUsernameAndEmail(resetPasswordDto.getUsername(), resetPasswordDto.getEmail()).get();
+            Long userId = user.getId();
+            user.setPassword(passwordEncoder.encode(resetPasswordDto.getNewPassword()));
+            userRepository.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>("username and email are not matched", HttpStatus.BAD_REQUEST);
+        }
+
     }
 
-    @GetMapping("/reset")
-    public String getResetPage(){
-        return "resetPassword";
-    }
-
-    @GetMapping("/main")
-    public String getMainPage(){
-        return "index";
-    }
 }

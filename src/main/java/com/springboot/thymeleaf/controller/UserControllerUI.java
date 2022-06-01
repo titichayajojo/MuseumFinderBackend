@@ -1,6 +1,8 @@
 package com.springboot.thymeleaf.controller;
 
+import com.springboot.controller.TagController;
 import com.springboot.controller.UserController;
+import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,26 +20,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @Controller
 public class UserControllerUI {
 
     @Autowired
     UserController userController;
+
+    @Autowired
+    TagController tagController;
     @RequestMapping("/user-profile")
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
 
-        User user = userController.getCurrentLoggedInUserProfile();
-        model.addAttribute("user", user);
-
-        return "userProfile.html";
+            return "userProfile.html";
+        }catch (Exception e){
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping("/edit-user-profile")
     public String editUserProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
 
         User user = userController.getCurrentLoggedInUserProfile();
+        List<Tag> tags = tagController.getAllTags();
         model.addAttribute("user", user);
+        model.addAttribute("tags", tags);
 
         return "editUserProfile.html";
     }

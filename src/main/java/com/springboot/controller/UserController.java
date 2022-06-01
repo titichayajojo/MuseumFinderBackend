@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ import java.lang.module.ResolutionException;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api")
 public class UserController {
     @Autowired
@@ -36,14 +37,21 @@ public class UserController {
 
     @PostMapping("/user/users/info/{id}")
     public String updateUserById(@PathVariable(value = "id") Long userId,
-                                                   @Valid User userDetails) throws ResourceNotFoundException {
+                                 @Valid User userDetails) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
         if(userDetails.getFirstName() != null) user.setFirstName(userDetails.getFirstName());
         if(userDetails.getLastName() != null) user.setLastName(userDetails.getLastName());
+        if(userDetails.getTags() != null) {
+            List<String> tags = userDetails.getTags();
+            while (tags.remove(null));
+            userDetails.setTags((ArrayList<String>) tags);
+            editCurrentUserTags(userDetails);
+        }
 
         final User updatedUser = userRepository.save(user);
+
         return "redirect:/user-profile";
     }
 
@@ -71,22 +79,15 @@ public class UserController {
     }
 
     @GetMapping("/user/museums")
-    public List<Museum> getMuseumsFromCurrentUser(){
+    public List<Museum> getMuseumsFromCurrentUser() {
         try {
             User user = this.getCurrentLoggedInUserProfile();
             ArrayList<String> userTags = user.getTags();
             List<Museum> museums = (List<Museum>) museumController.sortMuseumsByTags(userTags).getBody();
             return museums;
-        }catch (Exception e){
+        } catch (Exception e) {
             return museumController.getAllMuseums();
         }
-    }
-
-    @GetMapping("/user/logout")
-    public String logout(HttpServletRequest request) throws ServletException {
-        request.logout();
-        SecurityContextHolder.clearContext();
-        return "logout successfully";
     }
 
 
