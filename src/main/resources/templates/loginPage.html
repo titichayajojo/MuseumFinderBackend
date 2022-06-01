@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
     <link rel="icon" type="image/png" th:src="@{/images/museum.png}">
 </head>
 <body>
+<div th:insert="topNavigationBar :: navigationBar"></div>
 <section id="loginSection">
     <div id="leftHalf">
         <a href="/main" class="backButton">&#8592;</a>
@@ -17,17 +19,18 @@
         <header>
             <h1>Login</h1>
         </header>
-        <form id="form">
+        <div id="error" th:object="${error}" th:if="${error != null}" th:text="${error}"></div>
+        <form id="form" action="#" method="post" th:action="@{/method/login}" th:object="${loginDto}" >
             <div class="input">
                 <label>Username</label>
-                <input type="text" placeholder="Username" class="username">
+                <input type="text" placeholder="Username" class="username" th:field="*{usernameOrEmail}">
             </div>
             <div class="input">
                 <label>Password</label>
-                <input type="password" placeholder="******" class="password">
+                <input type="password" placeholder="******" class="password" th:field="*{password}">
             </div>
             <div class="forget"><a href="/reset">Forgot password?</a></div>
-            <button class="login">Login</button>
+            <button class="login" type="submit">Login</button>
         </form>
         <footer>Not a member? <a th:href="@{/register}">Create an account</a></footer>
     </div>

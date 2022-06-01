@@ -26,11 +26,14 @@ public class UserControllerUI {
     UserController userController;
     @RequestMapping("/user-profile")
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
 
-        User user = userController.getCurrentLoggedInUserProfile();
-        model.addAttribute("user", user);
-
-        return "userProfile.html";
+            return "userProfile.html";
+        }catch (Exception e){
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping("/edit-user-profile")

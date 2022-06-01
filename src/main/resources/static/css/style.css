@@ -25,7 +25,7 @@ a{
 
 #loginSection{
     height: 60%;
-    margin: 10rem 10rem;
+    margin: 3rem 10rem;
 }
 
 #registerSection{
@@ -202,4 +202,9 @@ label {
 
 #rightHalf #form .reset{
     margin-top: 3.5rem;
+}
+
+#error{
+    padding-left: 20%;
+    color: red;
 }

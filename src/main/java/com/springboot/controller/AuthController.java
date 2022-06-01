@@ -17,6 +17,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -85,23 +87,30 @@ public class AuthController {
 
     }
 
-    @GetMapping("/register")
-    public String getRegisterPage(){
-        return "registerPage";
+    @GetMapping("/user/logout")
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        SecurityContextHolder.clearContext();
+        return "logout successfully";
     }
 
-    @GetMapping("/login")
-    public String getLoginPage(){
-        return "loginPage";
-    }
-
-    @GetMapping("/reset")
-    public String getResetPage(){
-        return "resetPassword";
-    }
-
-    @GetMapping("/main")
-    public String getMainPage(){
-        return "index";
-    }
+//    @GetMapping("/register")
+//    public String getRegisterPage(){
+//        return "registerPage";
+//    }
+//
+//    @GetMapping("/login")
+//    public String getLoginPage(){
+//        return "loginPage";
+//    }
+//
+//    @GetMapping("/reset")
+//    public String getResetPage(){
+//        return "resetPassword";
+//    }
+//
+//    @GetMapping("/main")
+//    public String getMainPage(){
+//        return "index";
+//    }
 }

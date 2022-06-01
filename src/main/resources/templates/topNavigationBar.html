@@ -24,9 +24,10 @@
                     <i class="search-button"></i>
                 </button>
             </form>
-
-
         </div>
+        <a style="float:right;" href="/logout" th:object="${user}" th:if="${user != null}" th:text="Logout"></a>
+        <a style="float:right;" href="/user-profile" th:object="${user}" th:text="${user != null} ? ${user.username} : 'Login'"></a>
+
     </div>
 
 </body>

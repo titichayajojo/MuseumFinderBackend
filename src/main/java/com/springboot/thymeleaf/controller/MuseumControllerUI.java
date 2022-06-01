@@ -2,8 +2,10 @@ package com.springboot.thymeleaf.controller;
 
 import com.springboot.controller.MuseumController;
 import com.springboot.controller.TagController;
+import com.springboot.controller.UserController;
 import com.springboot.entity.Museum;
 import com.springboot.entity.Tag;
+import com.springboot.entity.User;
 import com.springboot.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +33,19 @@ public class MuseumControllerUI {
     @Autowired
     TagController tagController;
 
+    @Autowired
+    UserController userController;
+
     @RequestMapping(value = "/museum/{id}", method = GET)
     public String MuseumByIdPage(HttpServletRequest request, Model model, @PathVariable("id") long id) throws ResourceNotFoundException {
 
         Museum museum = (Museum) museumController.getMuseumById(id).getBody();
         model.addAttribute("museum", museum);
+
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
 
         return "museum.html";
     }
@@ -46,6 +56,12 @@ public class MuseumControllerUI {
         List<Tag> tags = tagController.getAllTags();
         model.addAttribute("tags",tags);
         model.addAttribute("museum", new Museum());
+
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
+
         return "createMuseum.html";
     }
 
@@ -59,6 +75,11 @@ public class MuseumControllerUI {
         museumController.addImage(museum.getId(),multipartFile);
 
         model.addAttribute("museum", museum);
+
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
 
         return "redirect:/museum/" + museum.getId();
     }

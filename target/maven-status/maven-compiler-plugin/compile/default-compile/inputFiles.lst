@@ -20,6 +20,7 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Role.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Employee.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/SpringbootApplication.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/thymeleaf/controller/AuthenticationControllerUI.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/AuthController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/TagController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/TagRepository.java

@@ -39,6 +39,11 @@ public class HomePageControllerUI {
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
 
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
+
         return "homePage.html";
     }
 
@@ -49,13 +54,23 @@ public class HomePageControllerUI {
         model.addAttribute("museums", museums);
         model.addAttribute("tag", tag);
 
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
+
         return "homePage.html";
     }
 
     @RequestMapping(value = "/museums")
     public String HomePageByKeyword(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
         List<Museum> museums = (List<Museum>) museumController.searchByKeyword(keyword).getBody();
+
         model.addAttribute("museums", museums);
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
 
         return "homePage.html";
     }
@@ -63,6 +78,11 @@ public class HomePageControllerUI {
     public String MuseumRow(HttpServletRequest request, Model model){
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
+
+        try {
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+        }catch (Exception e){}
 
         return "museumRow.html";
     }

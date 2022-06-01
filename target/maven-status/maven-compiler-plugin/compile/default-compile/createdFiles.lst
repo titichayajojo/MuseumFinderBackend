@@ -22,6 +22,7 @@ com/springboot/SpringbootApplication.class
 com/springboot/exception/ErrorDetails.class
 com/springboot/repository/MuseumRepository.class
 com/springboot/repository/RoleRepository.class
+com/springboot/thymeleaf/controller/AuthenticationControllerUI.class
 com/springboot/controller/EmployeeController.class
 com/springboot/repository/UserRepository.class
 com/springboot/controller/AuthController.class

@@ -71,22 +71,15 @@ public class UserController {
     }
 
     @GetMapping("/user/museums")
-    public List<Museum> getMuseumsFromCurrentUser(){
+    public List<Museum> getMuseumsFromCurrentUser() {
         try {
             User user = this.getCurrentLoggedInUserProfile();
             ArrayList<String> userTags = user.getTags();
             List<Museum> museums = (List<Museum>) museumController.sortMuseumsByTags(userTags).getBody();
             return museums;
-        }catch (Exception e){
+        } catch (Exception e) {
             return museumController.getAllMuseums();
         }
-    }
-
-    @GetMapping("/user/logout")
-    public String logout(HttpServletRequest request) throws ServletException {
-        request.logout();
-        SecurityContextHolder.clearContext();
-        return "logout successfully";
     }
 
 
