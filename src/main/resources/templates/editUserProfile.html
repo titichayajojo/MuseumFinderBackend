@@ -16,6 +16,9 @@
     <img class="profile-img" width="150px" th:src="@{images/profile.jpg}" alt="profile picture">
     <h4 th:text="${user.firstName} + ' ' + ${user.lastName}"></h4>
     <p style="color:#999999;" th:text="${user.email}"></p>
+    <div class="tags-container" th:each="tag: ${user.tags}">
+      <button th:text="${tag}"></button>
+    </div>
   </div>
 
   <div class="profile-details">
@@ -37,6 +40,18 @@
     </div>
     <div class="title-info">Zip code
       <div class="info" th:text="${user.zipCode}"></div>
+    </div>
+    <div class="tags-container">
+      <div th:each="tag, itemStat: ${tags}">
+        <input type="checkbox"
+               th:text="${tag.name}"
+               th:value="${tag.name}"
+               th:name="|tags[${itemStat.index}]|"
+               class="tag-button"
+               th:id="${tag.name}"
+               th:field="*{user.tags[__${itemStat.index}__]}"
+        ></input>
+      </div>
     </div>
     <button id="edit-btn" type="submit" onclick=onclick="window.location='user-profile'">SAVE</button>
     </form>

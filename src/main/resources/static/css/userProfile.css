@@ -12,7 +12,7 @@ body{
     background-color: white;
     display: flex;
     justify-content: center;
-    height: 90vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -49,6 +49,7 @@ body{
 
 #edit-btn{
     margin-top: 5%;
+    margin-bottom: 10%;
     font-size: 20px;
     padding: 10px 30px 10px 30px;
     border-radius: 10px;
@@ -62,7 +63,7 @@ body{
 }
 
 .tags-container{
-    display: inline-block
+    display: inline;
 }
 
 .tags-container button{
