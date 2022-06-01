@@ -3,8 +3,10 @@ package com.springboot.thymeleaf.controller;
 import com.springboot.controller.AuthController;
 import com.springboot.entity.User;
 import com.springboot.payload.LoginDto;
+import com.springboot.payload.ResetPasswordDto;
 import com.springboot.payload.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,5 +72,27 @@ public class AuthenticationControllerUI {
             return "registerPage.html";
         }
 
+    }
+
+    @RequestMapping("/reset-password")
+    public String ResetPasswordPage(HttpServletRequest request, Model model){
+        model.addAttribute("resetPasswordDto",new ResetPasswordDto());
+        return "resetPassword.html";
+    }
+
+    @RequestMapping(value = "/method/reset-password", method = POST)
+    public String ResetPassword(HttpServletRequest request, Model model, ResetPasswordDto resetPasswordDto){
+        model.addAttribute("resetPasswordDto", new ResetPasswordDto());
+        ResponseEntity response = null;
+        try {
+            response = authController.resetPassword(resetPasswordDto);
+            User user = (User) response.getBody();
+            model.addAttribute("user",user);
+            return "redirect:/login";
+        }catch (Exception e){
+            String error = (String) response.getBody();
+            model.addAttribute("error", error);
+            return "resetPassword.html";
+        }
     }
 }

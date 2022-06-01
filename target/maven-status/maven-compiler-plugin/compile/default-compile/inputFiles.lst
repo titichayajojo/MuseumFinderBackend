@@ -23,6 +23,7 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/thymeleaf/controller/AuthenticationControllerUI.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/AuthController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/TagController.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/payload/ResetPasswordDto.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/TagRepository.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/UserController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/entity/Exhibition.java

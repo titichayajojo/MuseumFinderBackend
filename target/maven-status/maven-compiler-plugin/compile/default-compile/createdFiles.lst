@@ -21,6 +21,7 @@ com/springboot/config/FileUploadUtil.class
 com/springboot/SpringbootApplication.class
 com/springboot/exception/ErrorDetails.class
 com/springboot/repository/MuseumRepository.class
+com/springboot/payload/ResetPasswordDto.class
 com/springboot/repository/RoleRepository.class
 com/springboot/thymeleaf/controller/AuthenticationControllerUI.class
 com/springboot/controller/EmployeeController.class
