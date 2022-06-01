@@ -3,7 +3,9 @@ package com.springboot.thymeleaf.controller;
 import com.springboot.controller.AuthController;
 import com.springboot.entity.User;
 import com.springboot.payload.LoginDto;
+import com.springboot.payload.SignUpDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,5 +47,28 @@ public class AuthenticationControllerUI {
     public String Logout(HttpServletRequest request) throws ServletException {
         authController.logout(request);
         return "redirect:/login";
+    }
+
+    @RequestMapping("/register")
+    public String RegisterPage(HttpServletRequest request, Model model){
+        model.addAttribute("signupDto", new SignUpDto());
+        return "registerPage.html";
+    }
+
+    @RequestMapping(value = "/method/register", method = POST)
+    public String Signup(HttpServletRequest request, Model model, SignUpDto signUpDto){
+        model.addAttribute("signupDto", new SignUpDto());
+        ResponseEntity response = null;
+        try {
+            response = authController.registerUser(signUpDto);
+            User user = (User) response.getBody();
+            model.addAttribute("user",user);
+            return "redirect:/login";
+        }catch (Exception e){
+            String error = (String) response.getBody();
+            model.addAttribute("error", error);
+            return "registerPage.html";
+        }
+
     }
 }

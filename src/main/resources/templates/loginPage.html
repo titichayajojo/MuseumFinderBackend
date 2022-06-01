@@ -12,7 +12,7 @@
 <div th:insert="topNavigationBar :: navigationBar"></div>
 <section id="loginSection">
     <div id="leftHalf">
-        <a href="/main" class="backButton">&#8592;</a>
+        <a onclick="history.back()" class="backButton">&#8592;</a>
         <img th:src="@{/images/login.jpeg}" width="100%" height="100%">
     </div>
     <div id="rightHalf">
@@ -23,11 +23,11 @@
         <form id="form" action="#" method="post" th:action="@{/method/login}" th:object="${loginDto}" >
             <div class="input">
                 <label>Username</label>
-                <input type="text" placeholder="Username" class="username" th:field="*{usernameOrEmail}">
+                <input type="text" placeholder="Username" class="username" th:field="*{usernameOrEmail}" required="required">
             </div>
             <div class="input">
                 <label>Password</label>
-                <input type="password" placeholder="******" class="password" th:field="*{password}">
+                <input type="password" placeholder="******" class="password" th:field="*{password}" required="required">
             </div>
             <div class="forget"><a href="/reset">Forgot password?</a></div>
             <button class="login" type="submit">Login</button>

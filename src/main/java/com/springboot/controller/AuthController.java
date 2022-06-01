@@ -94,15 +94,6 @@ public class AuthController {
         return "logout successfully";
     }
 
-//    @GetMapping("/register")
-//    public String getRegisterPage(){
-//        return "registerPage";
-//    }
-//
-//    @GetMapping("/login")
-//    public String getLoginPage(){
-//        return "loginPage";
-//    }
 //
 //    @GetMapping("/reset")
 //    public String getResetPage(){
