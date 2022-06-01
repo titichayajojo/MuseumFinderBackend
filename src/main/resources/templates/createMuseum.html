@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Create Museum</title>
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" th:href="@{/css/createMuseum.css}">
+</head>
+<body>
+
+    <div th:insert="topNavigationBar :: navigationBar"></div>
+
+    <div style="margin-top:3%;">
+        <img src="/images/icons/home-plus.png" alt="pen icon" style="float:left; width:40px; margin-top: 20px;
+    margin-right: 10px; padding-left:25%">
+        <h1 style="float:left";>Create new museum</h1>
+    </div>
+
+    <div class="container" style="padding-left: 30%;">
+
+        <form action="#" method="post" th:action="@{/museum-add/created}" th:object="${museum}" enctype="multipart/form-data">
+            <div>
+                <div class="title" style="clear:both;">Museum Name</div>
+                    <input class="input-field" type="text" placeholder="Museum name.." required="required" th:field="*{name}">
+                <br>
+            </div>
+
+            <div class="title">Email</div>
+            <input class="input-field" type="email" placeholder="Email.." required="required" th:field="*{email}">
+            <br>
+
+            <div class="title">Phone Number</div>
+            <input class="input-field" type="text" placeholder="Phone number.." required="required" th:field="*{phoneNumber}">
+            <br>
+
+            <div class="title">Description</div>
+            <textarea class="input-field" id="description" placeholder="Description.." style="height=150px;" th:field="*{description}"></textarea>
+            <br>
+
+            <div class="title">Opening hours</div>
+            <textarea class="input-field" id="openingHours" placeholder="Opening hours.."  th:field="*{openingHours}"></textarea>
+            <br>
+
+            <div class="title">Address</div>
+            <textarea class="input-field" type="text" placeholder="Address.."  th:field="*{address}"></textarea>
+            <br>
+
+            <div class="title">Latitude</div>
+            <input class="input-field" type="number" step="any" placeholder="Latitude.."  th:field="*{latitude}">
+            <br>
+
+            <div class="title">Longitude</div>
+            <input class="input-field" type="number" step="any" placeholder="Longitude.."  th:field="*{longitude}">
+            <br>
+
+            <div class="tags-container">
+                <div th:each="tag, itemStat: ${tags}">
+                    <input type="checkbox"
+                           th:text="${tag.name}"
+                           th:value="${tag.name}"
+                           th:name="|tags[${itemStat.index}]|"
+                           class="tag-button"
+                           th:id="${tag.name}"
+                           th:field="*{tags[__${itemStat.index}__]}"
+                    ></input>
+                </div>
+            </div><br>
+
+            <div class="image-container">
+
+                <label>Image: </label>
+                <input type="file" name="image" accept="image/png, image/jpeg" />
+
+            </div><br>
+
+            <button type="submit" id="create-btn">CREATE</button>
+        </form>
+    </div>
+
+<script>
+
+
+
+</script>
+
+</body>
+</html>

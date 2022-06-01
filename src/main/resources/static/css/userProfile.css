@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     color: black;
@@ -8,7 +12,7 @@ body{
     background-color: white;
     display: flex;
     justify-content: center;
-    height: 90vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -45,6 +49,7 @@ body{
 
 #edit-btn{
     margin-top: 5%;
+    margin-bottom: 10%;
     font-size: 20px;
     padding: 10px 30px 10px 30px;
     border-radius: 10px;
@@ -57,3 +62,21 @@ body{
     background-color: #6b6b6a;
 }
 
+.tags-container{
+    display: inline;
+}
+
+.tags-container button{
+    background-color: hsl(210,8%,90%);
+    border: none;
+    border-radius: 4px;
+    margin-top: 20%;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.tags-container button:hover{
+    background-color: hsl(210,8%,75%);
+}
