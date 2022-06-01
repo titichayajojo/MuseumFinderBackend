@@ -33,7 +33,7 @@
       <div class="info" th:text="${user.email}"></div>
     </div>
     <div class="title-info">Date of Birth
-      <div class="info" th:text="${user.dateOfBirth}"></div>
+      <div class="info" id="dateOfBirth" th:text="${user.dateOfBirth}"></div>
     </div>
     <div class="title-info">Zip code
       <div class="info" th:text="${user.zipCode}"></div>
@@ -42,7 +42,10 @@
     </form>
   </div>
 </div>
-
+<script>
+      let date = document.getElementById("dateOfBirth").innerText;
+      document.getElementById("dateOfBirth").innerHTML = date.split(' ')[0];
+      </script>
 </body>
 </html>
 </html>
