@@ -6,6 +6,7 @@ com/springboot/controller/UserController.class
 com/springboot/config/SecurityConfigAdmin.class
 com/springboot/entity/Role.class
 com/springboot/thymeleaf/controller/HomePageControllerUI.class
+com/springboot/thymeleaf/controller/TopNavigationBarControllerUI.class
 com/springboot/config/MultipleEntryPointsSecurityConfig.class
 com/springboot/service/CustomUserDetailsService.class
 com/springboot/controller/MuseumController.class
@@ -27,6 +28,7 @@ com/springboot/repository/RoleRepository.class
 com/springboot/thymeleaf/controller/AuthenticationControllerUI.class
 com/springboot/controller/EmployeeController.class
 com/springboot/repository/UserRepository.class
+com/springboot/thymeleaf/controller/AdminControllerUI.class
 com/springboot/controller/AuthController.class
 com/springboot/service/UserService.class
 com/springboot/thymeleaf/controller/MuseumControllerUI.class

@@ -4,6 +4,7 @@ package com.springboot.thymeleaf.controller;
 import com.springboot.controller.MuseumController;
 import com.springboot.controller.UserController;
 import com.springboot.entity.Museum;
+import com.springboot.entity.Role;
 import com.springboot.entity.User;
 import com.springboot.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -33,16 +35,16 @@ public class HomePageControllerUI {
     @Autowired
     MuseumController museumController;
 
+    @Autowired
+    TopNavigationBarControllerUI topNavigationBarControllerUI;
+
     @RequestMapping("/")
     public String HomePage(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
 
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
@@ -54,10 +56,7 @@ public class HomePageControllerUI {
         model.addAttribute("museums", museums);
         model.addAttribute("tag", tag);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
@@ -67,10 +66,8 @@ public class HomePageControllerUI {
         List<Museum> museums = (List<Museum>) museumController.searchByKeyword(keyword).getBody();
 
         model.addAttribute("museums", museums);
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
@@ -79,12 +76,11 @@ public class HomePageControllerUI {
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "museumRow.html";
     }
+
+
 
 }
