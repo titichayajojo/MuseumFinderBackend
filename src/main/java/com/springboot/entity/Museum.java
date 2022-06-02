@@ -34,9 +34,6 @@ public class Museum {
     private Float latitude;
     private Float longitude;
 
-    @Column(nullable = false, columnDefinition = "boolean default false" )
-    private boolean studentFree;
-
     private ArrayList<Long> exhibitions;
     private ArrayList<String> tags;
 }
