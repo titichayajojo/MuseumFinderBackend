@@ -36,16 +36,16 @@ public class MuseumControllerUI {
     @Autowired
     UserController userController;
 
+    @Autowired
+    TopNavigationBarControllerUI topNavigationBarControllerUI;
+
     @RequestMapping(value = "/museum/{id}", method = GET)
     public String MuseumByIdPage(HttpServletRequest request, Model model, @PathVariable("id") long id) throws ResourceNotFoundException {
 
         Museum museum = (Museum) museumController.getMuseumById(id).getBody();
         model.addAttribute("museum", museum);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "museum.html";
     }
@@ -57,10 +57,7 @@ public class MuseumControllerUI {
         model.addAttribute("tags",tags);
         model.addAttribute("museum", new Museum());
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "createMuseum.html";
     }
@@ -76,10 +73,7 @@ public class MuseumControllerUI {
 
         model.addAttribute("museum", museum);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "redirect:/museum/" + museum.getId();
     }
