@@ -14,6 +14,7 @@
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/MuseumRepository.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/service/CustomUserDetailsService.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/repository/ExhibitionRepository.java
+/Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/controller/ExhibitionController.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/exception/ResourceNotFoundException.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/exception/GlobalExceptionHandler.java
 /Users/jojo/Documents/Frankfurt/museum-finder/src/main/java/com/springboot/config/SecurityConfigAdmin.java
