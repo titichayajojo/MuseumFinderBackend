@@ -1,53 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <html lang="en">
-    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>User Profile Page</title>
-      <link rel="stylesheet" th:href="@{/css/userProfile.css}">
-      <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-    </head>
-    <body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>User Profile Page</title>
+    <link rel="stylesheet" th:href="@{/css/userProfile.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+  </head>
+  <body>
 
-    <div th:insert="topNavigationBar :: navigationBar"></div>
+  <div class="nav">
+    <a href="/"><h2>Museum Finder</h2></a>
+    <a href="/" class="menu">Museum</a>
+    <a href="#Exhibition" class="menu">Exhibition</a>
+    <input type="text" name="Search-bar" placeholder="Search...">
+    <div class="profile"><a href="/user-profile"><img src="/images/icons/profile_icon.png"></a></div>
+  </div>
 
-      <div class="container">
-        <div class="profile-card">
-          <img class="profile-img" width="150px" th:src="@{images/profile.jpg}" alt="profile picture">
-          <h4 th:text="${user.firstName} + ' ' + ${user.lastName}"></h4>
-          <p style="color:#999999;" th:text="${user.email}"></p>
-          <div class="tags-container" th:each="tag: ${user.tags}">
-            <button th:text="${tag}"></button>
-          </div>
-        </div>
-
-        <div class="profile-details">
-          <h1 style="padding-bottom:40px; padding-top: 10%">Profile</h1>
-          <div>
-            <div class="title-info" style="display: inline-block; padding-right:10%">First name
-              <div type="text" id="divFirstName" style="color:black; font-size: medium;" th:text="${user.firstName}"></div>
-            </div>
-          <div class="title-info" style="display: inline-block">Last name
-            <div style="color:black; font-size: medium;" th:text="${user.lastName}"></div>
-          </div>
-          </div>
-          <div class="title-info">Email
-            <div class="info" th:text="${user.email}"></div>
-          </div>
-          <div class="title-info">Date of Birth
-            <div class="info" id="dateOfBirth" th:text="${user.dateOfBirth}"></div>
-          </div>
-          <div class="title-info">Zip code
-            <div class="info" th:text="${user.zipCode}"></div>
-          </div>
-          <button id="edit-btn" type="submit" onclick="window.location='edit-user-profile'">EDIT</button>
-        </div>
+  <div class="container">
+    <div class="profile-card">
+      <img class="profile-img" width="150px" th:src="@{images/profile.jpg}" alt="profile picture">
+      <h4 th:text="${user.firstName} + ' ' + ${user.lastName}"></h4>
+      <p style="color:#999999;" th:text="${user.email}"></p>
+      <div class="tags-container" th:each="tag: ${user.tags}">
+        <button th:text="${tag}"></button>
       </div>
+    </div>
 
-    <script>
-      let date = document.getElementById("dateOfBirth").innerText;
-      document.getElementById("dateOfBirth").innerHTML = date.split(' ')[0];      </script>
-    </body>
+    <div class="profile-details">
+      <h1 style="padding-bottom:40px; padding-top: 10%">Profile</h1>
+      <div>
+        <div class="title-info" style="display: inline-block; padding-right:10%">First name
+          <div type="text" id="divFirstName" style="color:black; font-size: medium;" th:text="${user.firstName}"></div>
+        </div>
+      <div class="title-info" style="display: inline-block">Last name
+        <div style="color:black; font-size: medium;" th:text="${user.lastName}"></div>
+      </div>
+      </div>
+      <div class="title-info">Email
+        <div class="info" th:text="${user.email}"></div>
+      </div>
+      <div class="title-info">Date of Birth
+        <div class="info" id="dateOfBirth" th:text="${user.dateOfBirth}"></div>
+      </div>
+      <div class="title-info">Zip code
+        <div class="info" th:text="${user.zipCode}"></div>
+      </div>
+      <button id="edit-btn" type="submit" onclick="window.location='edit-user-profile'">EDIT</button>
+    </div>
+  </div>
 
-  </html>
+  <script>
+    let date = document.getElementById("dateOfBirth").innerText;
+    document.getElementById("dateOfBirth").innerHTML = date.split(' ')[0];      </script>
+  </body>
+
 </html>

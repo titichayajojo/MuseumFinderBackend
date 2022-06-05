@@ -27,7 +27,6 @@ com/springboot/thymeleaf/controller/AuthenticationControllerUI.class
 com/springboot/controller/EmployeeController.class
 com/springboot/repository/UserRepository.class
 com/springboot/controller/AuthController.class
-com/springboot/service/UserService.class
 com/springboot/thymeleaf/controller/MuseumControllerUI.class
 com/springboot/entity/Tag.class
 com/springboot/payload/SignUpDto.class

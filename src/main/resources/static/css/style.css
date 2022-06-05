@@ -1,10 +1,7 @@
 @import url('http://fonts.cdnfonts.com/css/chalkduster');
 
-
-*{
-    padding: 0;
+body{
     margin: 0;
-    box-sizing: border-box;
 }
 
 html{
@@ -25,12 +22,12 @@ a{
 
 #loginSection{
     height: 60%;
-    margin: 3rem 10rem;
+    margin: 10rem 10rem;
 }
 
 #registerSection{
-    height: 140%;
-    margin: 3rem 10rem;
+    height: 70%;
+    margin: 8rem 10rem;
 }
 
 
@@ -38,7 +35,7 @@ a{
     position: absolute;
     float: left;
     width: 50%;
-    left: 0;
+    left: 0px;
     height: 100%;
 }
 
@@ -50,7 +47,7 @@ a{
     position: absolute;
     float: right;
     width: 50%;
-    right: 0;
+    right: 0px;
     height: 100%;
 }
 
@@ -132,10 +129,14 @@ label {
 }
 
 .nav{
+    background-color: #181816;;
     top: 0;
-    position: absolute;
+    padding-top: 2rem;
+    position: sticky;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
+    height: 60px;
+    border-bottom: 2px solid white;
 }
 
 .nav a{
@@ -146,43 +147,38 @@ label {
     color: white;
 }
 
-.nav a h1{
-    font-family: 'Chalkduster', sans-serif;
-    font-size: 50px;
-    margin-top: 1rem;
-    margin-left: 1.5rem;
-    margin-right: 2rem;
+.nav h2{
+    font-family: Chalkduster, sans-serif;
+    font-size: 45px;
+    position: relative;
     float: left;
+    margin-top: -1rem;
 }
 
 .nav .menu{
-    font-family: "Arial", sans-serif;;
     font-size: 30px;
     -webkit-text-stroke: 0.5px #955E00;
     padding: 5px 10px;
     margin-left: 3rem;
-    margin-top: 2rem;
     float: left;
 }
 
-.nav .nav_login a{
-    font-family: "Arial", sans-serif;;
-    font-size: 30px;
-    -webkit-text-stroke: 0.5px #955E00;
-    float: right;
-    margin-top: 2rem;
-    margin-right: 3rem;
+.nav input{
+    border-radius: 15px;
+    height: 25px;
+    width: 350px;
+    font-size: 20px;
+    margin-left: 5rem;
+    padding: 5px 0 5px 15px;
 }
 
 .slider{
-    margin-top: 7rem;
     width: 100%;
     height: 520px;
 }
-.slider h2{
+.slider h2, .museum_body h2{
     position: relative;
     font-size: 45px;
-    font-family: "Arial", sans-serif;;
     color: white;
     -webkit-text-stroke: 0.5px #955E00;
     margin-left: 8rem;
@@ -204,7 +200,231 @@ label {
     margin-top: 3.5rem;
 }
 
-#error{
-    padding-left: 20%;
-    color: red;
+.slider .exh_card .img {
+    width: 304px;
+    height: 304px;
+    box-shadow: 0 0 30px #955E00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider .exh_card .img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider .exh {
+    font-size: 25px;
+    -webkit-text-stroke: 0.5px #955E00;
+    width: 100%;
+    height: 480px;
+    display: block;
+}
+
+.slider .exh_card{
+    margin-left: 4rem;
+    width: 335px;
+    height: 100%;
+    display: flex;
+}
+
+.slider .exh_card .exh_info{
+    text-align: center;
+    line-height: 5px;
+    overflow: hidden;
+    margin-left: -6rem;
+}
+
+.slider a{
+    color: white;
+    text-decoration: none;
+}
+
+.nav .profile{
+    position: absolute;
+    right: 2.5rem;
+    top: 1rem;
+}
+
+.museum_content{
+    position: relative;
+    display: flex;
+    -webkit-text-stroke: 0.5px #955E00;
+    width: 100%;
+    height: 476px;
+    margin-bottom: 8rem;
+}
+
+.museum_image{
+    float: left;
+    width: 4010px;
+    height: 476px;
+    margin-left: 1.5rem;
+    box-shadow: 0 0 30px #955E00;
+    border-radius: 20px;
+}
+
+.museum_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.museum_info{
+    flex-grow: 1;
+    position: relative;
+    margin-left: 2rem;
+    padding-right: 1.5rem;
+}
+
+.museum_info .name{
+    font-size: 40px;
+    margin-bottom: 1.3rem;
+}
+
+.museum_info .description{
+    font-size: 25px;
+    overflow: scroll;
+}
+
+.museum_info .more{
+    position: relative;
+    font-size: 25px;
+    margin-left: 1rem;
+}
+
+.museum_info .more a{
+    text-decoration: underline;
+    color: white;
+}
+
+.museum_tag_container{
+    position: absolute;
+    bottom: 10px;
+    font-size: 20px;
+    margin-left: 2rem;
+    display: flex;
+}
+
+.museum_tag_container a{
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+
+.museum_tag_container .tag{
+    margin: -7px 15px 0 10px;
+    display: flex;
+    position: relative;
+    border-radius: 5px;
+    align-items: center;
+    background: white;
+}
+
+.tag a:hover{
+    background: #ccc;
+    color: ghostwhite;
+}
+
+.tag_container .heading_tag{
+    color: black;
+    padding: 10px;
+    margin: -10px 20px 0 15px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    background: white;
+    cursor: default;
+}
+
+.tag_container {
+    display: flex;
+    position: relative;
+    padding: 5px;
+    margin: 2rem 0 4rem 3rem;
+}
+
+.heading_tag i{
+    font-size: 17px;
+    position: relative;
+    top: -12px;
+    margin-left: -10px;
+}
+
+.museum_page .header{
+    text-align: center;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.header h2{
+    font-size: 70px;
+    -webkit-text-stroke: 1.5px #955E00;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.header .header_tag{
+    padding: 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-bottom: 3rem;
+}
+
+.header .tag_name{
+    color: black;
+    padding: 10px;
+    margin: -10px 20px 0 15px;
+    border-radius: 10px;
+    background: white;
+    cursor: default;
+}
+
+.header .header_image{
+    display: flex;
+    position: relative;
+    width: 900px;
+    height: 500px;
+    box-shadow: 0 0 30px #955E00;
+    justify-content: center;
+    border-radius: 25px;
+    overflow: hidden;
+    left: 18%;
+}
+
+.header_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.body{
+    -webkit-text-stroke: 0.5px #955E00;
+    margin-left: 2rem;
+    font-size: 25px;
+    padding-right: 5rem;
+}
+
+.body h3{
+    font-size: 40px;
+}
+
+.body ul{
+    margin-left: -1rem;
+    list-style: none;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
 }

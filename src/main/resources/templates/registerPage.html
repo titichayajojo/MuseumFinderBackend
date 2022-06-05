@@ -9,7 +9,6 @@
     <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
 </head>
 <body>
-<div th:insert="topNavigationBar :: navigationBar"></div>
 <section id="registerSection">
     <div id="leftHalf">
         <a onclick="history.back()" class="backButton">&#8592;</a>
@@ -22,28 +21,12 @@
         <div style="padding-left: 10%;" id="error" th:object="${error}" th:if="${error != null}" th:text="${error}"></div>
         <form id="form" action="#" method="post" th:action="@{/method/register}" th:object="${signupDto}">
             <div class="input">
-                <label>First name</label>
-                <input type="text" placeholder="First name" class="firstName" th:field="*{firstName}">
-            </div>
-            <div class="input">
-                <label>Last name</label>
-                <input type="text" placeholder="Last name" class="lastName" th:field="*{lastName}">
-            </div>
-            <div class="input">
-                <label>Date of birth</label>
-                <input type="date" placeholder="00/00/0000" class="dateOfBirth" th:field="*{dateOfBirth}">
-            </div>
-            <div class="input">
                 <label>Email</label>
                 <input type="text" placeholder="Email" class="email" th:field="*{email}" required="required">
             </div>
             <div class="input">
                 <label>Username</label>
                 <input type="text" placeholder="Username" class="username" th:field="*{username}" required="required">
-            </div>
-            <div class="input">
-                <label>Zip code</label>
-                <input type="number" placeholder="00000" class="zipCode" th:field="*{zipCode}">
             </div>
             <div class="input">
                 <label>Password</label>
