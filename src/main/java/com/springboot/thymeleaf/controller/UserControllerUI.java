@@ -2,6 +2,7 @@ package com.springboot.thymeleaf.controller;
 
 import com.springboot.controller.TagController;
 import com.springboot.controller.UserController;
+import com.springboot.entity.Role;
 import com.springboot.entity.Tag;
 import com.springboot.entity.User;
 
@@ -36,7 +37,13 @@ public class UserControllerUI {
     @RequestMapping("/user-profile")
     public String userProfilePage(HttpServletRequest request, Model model) throws URISyntaxException {
         try {
-            topNavigationBarControllerUI.topNavigationBarController(request, model);
+            User user = userController.getCurrentLoggedInUserProfile();
+            model.addAttribute("user", user);
+            String role = "";
+            for(Role r: user.getRoles()){
+                role = r.getName();
+            }
+            model.addAttribute("role",role);
             return "userProfile.html";
         }catch (Exception e){
             return "redirect:/login";
