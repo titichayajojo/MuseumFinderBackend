@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Tag</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+</head>
+<body>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
+
+    <div class="tags-container">
+        <div id= "tags" th:each="tag: ${tags}">
+            <div th:text="${tag.name}"></div>
+        </div>
+    </div>
+
+    <form action="#" method="post" th:action="@{/tag-add/created}" th:object="${tag}" enctype="multipart/form-data">
+        <div>
+
+            <input class="input-field" type="text" placeholder="Tag name.." required="required" th:field="*{name}">
+        </div>
+        <button type="submit" id="create-btn">CREATE</button>
+    </form>
+
+</body>
+</html>

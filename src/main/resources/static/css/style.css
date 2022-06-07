@@ -128,50 +128,6 @@ label {
     color: #955E00;
 }
 
-.nav{
-    background-color: #181816;;
-    top: 0;
-    padding-top: 2rem;
-    position: sticky;
-    width: 100%;
-    z-index: 100;
-    height: 60px;
-    border-bottom: 2px solid white;
-}
-
-.nav a{
-    display: block;
-    width: auto;
-    outline: 0;
-    text-align: center;
-    color: white;
-}
-
-.nav h2{
-    font-family: Chalkduster, sans-serif;
-    font-size: 45px;
-    position: relative;
-    float: left;
-    margin-top: -1rem;
-}
-
-.nav .menu{
-    font-size: 30px;
-    -webkit-text-stroke: 0.5px #955E00;
-    padding: 5px 10px;
-    margin-left: 3rem;
-    float: left;
-}
-
-.nav input{
-    border-radius: 15px;
-    height: 25px;
-    width: 350px;
-    font-size: 20px;
-    margin-left: 5rem;
-    padding: 5px 0 5px 15px;
-}
-
 .slider{
     width: 100%;
     height: 520px;
@@ -242,12 +198,6 @@ label {
     text-decoration: none;
 }
 
-.nav .profile{
-    position: absolute;
-    right: 2.5rem;
-    top: 1rem;
-}
-
 .museum_content{
     position: relative;
     display: flex;
@@ -259,22 +209,19 @@ label {
 
 .museum_image{
     float: left;
-    width: 4010px;
-    height: 476px;
     margin-left: 1.5rem;
     box-shadow: 0 0 30px #955E00;
     border-radius: 20px;
 }
 
 .museum_image img{
-    width: 100%;
-    height: 100%;
+    width: 700px;
+    height: 476px;
     object-fit: cover;
     border-radius: 20px;
 }
 
 .museum_info{
-    flex-grow: 1;
     position: relative;
     margin-left: 2rem;
     padding-right: 1.5rem;
@@ -287,18 +234,19 @@ label {
 
 .museum_info .description{
     font-size: 25px;
-    overflow: scroll;
+    max-height: 208px;
+    overflow: hidden;
 }
 
 .museum_info .more{
     position: relative;
     font-size: 25px;
-    margin-left: 1rem;
 }
 
 .museum_info .more a{
     text-decoration: underline;
     color: white;
+    -webkit-text-stroke: 0.5px #955E00;
 }
 
 .museum_tag_container{
@@ -307,6 +255,21 @@ label {
     font-size: 20px;
     margin-left: 2rem;
     display: flex;
+    max-width: 450px;
+}
+
+.scroller{
+    position: relative;
+    padding-top: 10px;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.museum_tag_container .text{
+    position: relative;
+    top: 6px;
+    margin-left: 0;
+    font-size: 30px;
 }
 
 .museum_tag_container a{

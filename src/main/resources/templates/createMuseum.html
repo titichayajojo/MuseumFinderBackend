@@ -5,16 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Create Museum</title>
     <link rel="stylesheet" th:href="@{/css/create.css}">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="icon" type="image/png" href="/images/museum.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .nav .search_bar {
+            margin-top: -5rem;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a href="Homepage.html"><h2>Museum Finder</h2></a>
-        <a href="#Museum" class="menu">Museum</a>
-        <a href="#Exhibition" class="menu">Exhibition</a>
-        <input type="text" name="Search-bar" placeholder="Search...">
-        <div class="profile"><a href="/user-profile"><img src="/images/icons/profile_icon.png"></a></div>
-    </div>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
 
     <div class="create">
         <div class="title">

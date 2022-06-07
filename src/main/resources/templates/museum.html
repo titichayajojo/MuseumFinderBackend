@@ -5,18 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title th:text="${museum.name}"></title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="icon" type="image/png" href="/images/museum.png">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- google map -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 <body>
-    <div class="nav">
-        <a href="Homepage.html"><h2>Museum Finder</h2></a>
-        <a href="#Museum" class="menu">Museum</a>
-        <a href="#Exhibition" class="menu">Exhibition</a>
-        <input type="text" name="Search-bar" placeholder="Search...">
-        <div class="profile"><a href="/user-profile"><img src="/images/icons/profile_icon.png"></a></div>
-    </div>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
 
     <div class="museum_page">
         <div class="header">

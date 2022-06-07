@@ -71,10 +71,10 @@ public class AuthController {
 
         // create user object
         User user = new User();
-        user.setFirstName(signUpDto.getFirstName());
-        user.setLastName(signUpDto.getLastName());
-        user.setDateOfBirth(df.parse(signUpDto.getDateOfBirth()));
-        user.setZipCode(signUpDto.getZipCode());
+        user.setFirstName("a");
+        user.setLastName("a");
+        user.setDateOfBirth(df.parse("0000-00-00"));
+        user.setZipCode(0);
         user.setUsername(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));

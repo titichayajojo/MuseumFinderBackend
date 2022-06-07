@@ -4,6 +4,7 @@ import com.springboot.controller.TagController;
 import com.springboot.controller.UserController;
 import com.springboot.entity.Tag;
 import com.springboot.entity.User;
+import com.springboot.entity.Role;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,6 +36,10 @@ public class UserControllerUI {
         try {
             User user = userController.getCurrentLoggedInUserProfile();
             model.addAttribute("user", user);
+            String role = "";
+            for(Role r: user.getRoles()){
+                role = r.getName();
+            }
 
             return "userProfile.html";
         }catch (Exception e){

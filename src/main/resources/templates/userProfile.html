@@ -5,16 +5,13 @@
     <title>User Profile Page</title>
     <link rel="stylesheet" th:href="@{/css/userProfile.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="icon" type="image/png" href="/images/museum.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
 
-  <div class="nav">
-    <a href="/"><h2>Museum Finder</h2></a>
-    <a href="/" class="menu">Museum</a>
-    <a href="#Exhibition" class="menu">Exhibition</a>
-    <input type="text" name="Search-bar" placeholder="Search...">
-    <div class="profile"><a href="/user-profile"><img src="/images/icons/profile_icon.png"></a></div>
-  </div>
+  <div th:insert="topNavigationBar :: navigationBar"></div>
 
   <div class="container">
     <div class="profile-card">
