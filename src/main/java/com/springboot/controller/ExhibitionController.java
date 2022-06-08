@@ -50,6 +50,7 @@ public class ExhibitionController {
 
     @PostMapping("/exhibitions")
     public ResponseEntity<?> createExhibition(@Valid @RequestBody Exhibition exhibition){
+        exhibition.setStatus("on going");
         exhibitionRepository.save(exhibition);
         return ResponseEntity.ok(exhibition);
     }
