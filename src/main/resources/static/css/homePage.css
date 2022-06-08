@@ -96,9 +96,3 @@
     text-decoration: inherit; /* no underline */
 
 }
-
-#status{
-    font-size: large;
-    font-weight: bold;
-    color: green;
-}

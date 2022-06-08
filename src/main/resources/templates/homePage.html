@@ -44,7 +44,8 @@
                 <div class="exhibition" th:style="'height:300px; background-image:url(' + @{${'/exhibition-images/' + exhibition.id + '/' + exhibition.fileName}} + ');'">
                     <div id= "name" class="exhibition-details" th:text="${exhibition.name}" />
                     <div id= "Date" class="exhibition-details" th:text="${exhibition.startDate} + ' - ' + ${exhibition.endDate}" />
-                    <div id= "status" class="exhibition-details" th:text="${exhibition.status}"/>
+                    <div class="exhibition-details" th:text="${exhibition.status}" th:if="${exhibition.status} == 'on going'" th:style="'color:green; font-size: large; font-weight: bold;'"/>
+                    <div class="exhibition-details" th:text="${exhibition.status}" th:if="${exhibition.status} == 'over'" th:style="'color:red; font-size: large; font-weight: bold;'"/>
                 </div>
             </a>
         </div>
@@ -63,6 +64,7 @@
 let slideIndex = 0;
 showSlides();
 
+
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -79,12 +81,6 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
-
-    let status = document.getElementById("status").innerText;
-    if(status == 'over')
-      document.getElementById("status").style.color = "red";
-     else
-       document.getElementById("status").style.color = "green";
 
 </script>
 </html>
