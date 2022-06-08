@@ -30,6 +30,7 @@ com/springboot/entity/Exhibition.class
 com/springboot/entity/Museum.class
 com/springboot/repository/EmployeeRepository.class
 com/springboot/thymeleaf/controller/UserControllerUI.class
+com/springboot/thymeleaf/controller/ExhibitionControllerUI.class
 com/springboot/repository/MuseumRepository.class
 com/springboot/repository/UserRepository.class
 com/springboot/thymeleaf/controller/MuseumControllerUI.class
