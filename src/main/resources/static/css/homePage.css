@@ -63,7 +63,7 @@
   .text {font-size: 11px}
 }
 
-#museums-title{
+.title{
     font-family: "verdana";
     font-size: xx-large;
     margin-left: 2%;
@@ -82,4 +82,17 @@
 
 .filter:hover{
     background-color: hsl(210,8%,75%);
+}
+
+.exhibition-details{
+    display: block;
+    background:#7f7f7f;
+    background:rgba(255,255,255,0.5);
+    width:fit-content;
+}
+
+.exhibition-container a{
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+
 }

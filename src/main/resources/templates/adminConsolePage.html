@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Admin Console</title>
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+</head>
+<body>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
+
+    <a href="/museum-add">Create museum</a>
+    <a href="/tag-add">Create tag</a>
+    <a href="/exhibition-add">Create Exhibition</a>
+
+</body>
+</html>
