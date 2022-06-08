@@ -37,7 +37,20 @@
         <span class="dot"></span>
     </div>
 
-    <h1 id="museums-title">Museums</h1>
+    <h1 class="title">Exhibitions</h1>
+    <div style="border:1px solid black; overflow-x:scroll; overflow-y: hidden;  white-space: nowrap; margin: 2%;">
+        <div class="exhibition-container" th:each="exhibition: ${exhibitions}"  style ="width:500px; height:300px; display:inline-block;" >
+            <a th:href="@{/exhibition/{id}/(id=${exhibition.id})}">
+                <div class="exhibition" th:style="'height:300px; background-image:url(' + @{${'/exhibition-images/' + exhibition.id + '/' + exhibition.fileName}} + ');'">
+                    <div id= "name" class="exhibition-details" th:text="${exhibition.name}" />
+                    <div id= "Date" class="exhibition-details" th:text="${exhibition.startDate} + ' - ' + ${exhibition.endDate}" />
+                    <div id= "status" class="exhibition-details" th:text="${exhibition.status}"/>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <h1 class="title">Museums</h1>
     <form action="#" method="get" th:action="@{/}">
         <button class="filter" th:if="${tag != null}" th:text="${tag}"></button>
     </form>
@@ -66,5 +79,12 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
+
+    let status = document.getElementById("status").innerText;
+    if(status == 'over')
+      document.getElementById("status").style.color = "red";
+     else
+       document.getElementById("status").style.color = "green";
+
 </script>
 </html>

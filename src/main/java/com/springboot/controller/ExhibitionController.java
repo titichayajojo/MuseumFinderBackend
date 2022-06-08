@@ -13,6 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,13 +26,31 @@ public class ExhibitionController {
     ExhibitionRepository exhibitionRepository;
 
 
+    private String modifyDateLayout(String inputDate) throws ParseException{
+        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(inputDate);
+        return new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(date);
+    }
+
+    public void updateStatus() throws ParseException {
+        List<Exhibition> exhibitions = exhibitionRepository.findAll();
+        for(Exhibition exhibition : exhibitions){
+            String date = modifyDateLayout(exhibition.getEndDate().toString());
+            if (new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").parse(date).before(new Date())) {
+                exhibition.setStatus("over");
+                exhibitionRepository.save(exhibition);
+            }
+        }
+    }
+
     @GetMapping("/exhibitions")
-    public List<Exhibition> getAllExhibitions(){
+    public List<Exhibition> getAllExhibitions() throws ParseException {
+        updateStatus();
         return exhibitionRepository.findAll();
     }
 
     @PostMapping("/exhibitions")
     public ResponseEntity<?> createExhibition(@Valid @RequestBody Exhibition exhibition){
+        exhibition.setStatus("on going");
         exhibitionRepository.save(exhibition);
         return ResponseEntity.ok(exhibition);
     }
@@ -37,6 +59,7 @@ public class ExhibitionController {
     @GetMapping("/exhibitions/{id}")
     public ResponseEntity<?> getExhibitionById(@PathVariable(value = "id") Long exhibitionId){
         try {
+            updateStatus();
             Exhibition exhibition = exhibitionRepository.findById(exhibitionId).get();
             return ResponseEntity.ok().body(exhibition);
         }catch (Exception e){
