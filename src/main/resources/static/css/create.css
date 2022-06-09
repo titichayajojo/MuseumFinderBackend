@@ -3,6 +3,7 @@
 
 body{
     margin: 0;
+    box-sizing: border-box;
 }
 a{
     text-decoration: none;
@@ -32,7 +33,7 @@ form{
     font-size: 40px;
 }
 
-.namdress, .contact, .geographic{
+.namdress, .contact, .geographic, .date{
     display: flex;
 }
 
@@ -40,8 +41,9 @@ form h3{
     font-size: 25px;
 }
 
-#name, #mail, #lat{
+#name, #mail, #lat, #start-date{
     margin-right: 5rem;
+    position: relative;
 }
 
 form input, form textarea, form select{
@@ -57,6 +59,11 @@ form input, form textarea, form select{
 .des textarea, .hours textarea{
     height: 7rem;
     width: 42rem;
+}
+
+#description textarea{
+    height: 7rem;
+    width: 18rem;
 }
 
 .geographic{
@@ -129,19 +136,19 @@ form input, form textarea, form select{
     overflow: scroll;
 }
 
-.museum_img{
+.select_img{
     display: flex;
     margin-bottom: 2.5rem;
 }
 
-.museum_img input{
+.select_img input{
     border: none;
     border-radius: 0;
     margin-top: 2rem;
     margin-left: 2rem;
 }
 
-.create button{
+.create button, .tag_creation button{
     font-size: 30px;
     text-align: center;
     border-radius: 5px;
@@ -153,4 +160,37 @@ form input, form textarea, form select{
 
 #name input{
     margin: 0;
+}
+
+.tag_creation{
+    font-size: 35px;
+    text-align: center;
+}
+.tag_creation h3{
+    margin-bottom: 0;
+    margin-left: 2rem;
+}
+
+.tag_creation ul{
+    margin-top: 1rem;
+}
+
+.tag_creation li{
+    list-style: none;
+}
+
+.tag_creation form{
+    margin-top: 2rem;
+    margin-left: 5rem;
+}
+
+.tag_create input {
+    height: 2rem;
+    width: 15rem;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+}
+
+.tag_creation button{
+    margin-left: -3rem;
 }

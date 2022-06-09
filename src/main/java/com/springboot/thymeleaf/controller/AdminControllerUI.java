@@ -34,13 +34,6 @@ public class AdminControllerUI {
     @Autowired
     TopNavigationBarControllerUI topNavigationBarControllerUI;
 
-    @RequestMapping("/admin-console")
-    public String AdminConsole(HttpServletRequest request, Model model){
-
-        topNavigationBarControllerUI.topNavigationBarController(request, model);
-
-        return "adminConsolePage.html";
-    }
 
     @RequestMapping(value = "/tag-add", method = GET)
     public String CreateMuseumPage(HttpServletRequest request, Model model){

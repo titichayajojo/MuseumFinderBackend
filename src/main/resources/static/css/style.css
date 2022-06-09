@@ -18,6 +18,7 @@ section{
 
 a{
     text-decoration: none;
+    cursor: pointer;
 }
 
 #loginSection{
@@ -376,6 +377,11 @@ label {
     padding-right: 5rem;
 }
 
+.body a{
+    color: white;
+    -webkit-text-stroke: 0.5px #955E00;
+}
+
 .body h3{
     font-size: 40px;
 }
@@ -390,4 +396,12 @@ label {
     /* The height is 400 pixels */
     width: 100%;
     /* The width is the width of the web page */
+}
+
+#error{
+    font-size: 30px;
+    -webkit-text-stroke: 0.5px #955E00;
+    text-align: center;
+    top: 4rem;
+    position: relative;
 }

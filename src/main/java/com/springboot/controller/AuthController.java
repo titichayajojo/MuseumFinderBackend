@@ -71,10 +71,10 @@ public class AuthController {
 
         // create user object
         User user = new User();
-        user.setFirstName("a");
-        user.setLastName("a");
-        user.setDateOfBirth(df.parse("0000-00-00"));
-        user.setZipCode(0);
+        user.setFirstName(signUpDto.getFirstName());
+        user.setLastName(signUpDto.getLastName());
+        user.setDateOfBirth(df.parse(signUpDto.getDateOfBirth()));
+        user.setZipCode(signUpDto.getZipCode());
         user.setUsername(signUpDto.getUsername());
         user.setEmail(signUpDto.getEmail());
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
@@ -106,7 +106,7 @@ public class AuthController {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         catch(Exception e){
-            return new ResponseEntity<>("username and email are not matched", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Username and email are not matched!", HttpStatus.BAD_REQUEST);
         }
 
     }

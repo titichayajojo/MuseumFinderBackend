@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Create Exhibition</title>
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="stylesheet" th:href="@{/css/create.css}">
+    <link rel="shortcut icon" type="image/png" href="/images/museum.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .nav .search_bar {
+        margin-top: -5rem;
+      }
+
+      .title{
+        position: relative;
+      }
+
+      form{
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+  <div th:insert="topNavigationBar :: navigationBar"></div>
+
+  <div class="create">
+    <div class="title">
+      <h2>Add New Exhibition</h2>
+    </div>
+    <form action="#" method="post" th:action="@{/exhibition-add/created}" th:object="${exhibition}" enctype="multipart/form-data">
+      <div id="name">
+        <label><h3>Exhibition Name</h3></label>
+        <input type="text" placeholder="Exhibition name.." th:field="*{name}">
+      </div>
+
+      <div id="description">
+        <label><h3>Description</h3></label>
+        <textarea name="description" placeholder="Description..." th:field="*{description}"></textarea>
+      </div>
+
+      <div class="date">
+        <div id="start-date">
+          <label><h3>Start Date</h3></label>
+          <input type="date" placeholder="00/00/0000" th:field="*{startDate}">
+        </div>
+        <div id="end-date">
+          <label><h3>End Date</h3></label>
+          <input type="date" placeholder="00/00/0000" th:field="*{endDate}">
+        </div>
+      </div>
+
+      <div>
+        <label><h3>Museums</h3></label>
+        <select name="museums" id="museums" th:field="*{museumId}">
+          <option th:each="museum: ${museums}" th:value="${museum.id}" th:text="${museum.name}"></option>
+        </select>
+      </div>
+
+      <div class="select_img">
+        <label><h3>Choose an image: </h3></label>
+        <input type="file" name="image" accept="image/png, image/jpeg, image/jpg">
+      </div>
+
+      <div class="status">
+        <input type="hidden" placeholder="status" class="status" value="on going" th:field="*{status}">
+      </div>
+
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+          var checkList = document.getElementById('list1');
+          checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+              if (checkList.classList.contains('visible'))
+                  checkList.classList.remove('visible');
+              else
+                  checkList.classList.add('visible');
+          }
+  </script>
+
+  </body>
+</html>

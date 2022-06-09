@@ -1,9 +1,12 @@
 package com.springboot.thymeleaf.controller;
 
 
+import com.springboot.controller.ExhibitionController;
 import com.springboot.controller.MuseumController;
 import com.springboot.controller.UserController;
+import com.springboot.entity.Exhibition;
 import com.springboot.entity.Museum;
+import com.springboot.entity.Role;
 import com.springboot.entity.User;
 import com.springboot.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Set;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -33,44 +38,47 @@ public class HomePageControllerUI {
     @Autowired
     MuseumController museumController;
 
+    @Autowired
+    ExhibitionController exhibitionController;
+
+    @Autowired
+    TopNavigationBarControllerUI topNavigationBarControllerUI;
+
     @RequestMapping("/")
-    public String HomePage(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
+    public String HomePage(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword) throws ParseException {
 
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
+        List<Exhibition> exhibitions = exhibitionController.getAllExhibitions();
         model.addAttribute("museums", museums);
+        model.addAttribute("exhibitions", exhibitions);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
 
     @RequestMapping(value = "/museums/{tag}", method = GET)
-    public String HomePageByTag(HttpServletRequest request, Model model, @PathVariable("tag") String tag) throws ResourceNotFoundException {
+    public String HomePageByTag(HttpServletRequest request, Model model, @PathVariable("tag") String tag) throws ResourceNotFoundException, ParseException {
 
         List<Museum> museums = (List<Museum>) museumController.getMuseumsByTag(tag).getBody();
+        List<Exhibition> exhibitions = exhibitionController.getAllExhibitions();
         model.addAttribute("museums", museums);
+        model.addAttribute("exhibitions", exhibitions);
         model.addAttribute("tag", tag);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
 
     @RequestMapping(value = "/museums")
-    public String HomePageByKeyword(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword){
+    public String HomePageByKeyword(HttpServletRequest request, Model model, @RequestParam(name = "keyword", required = false) String keyword) throws ParseException {
         List<Museum> museums = (List<Museum>) museumController.searchByKeyword(keyword).getBody();
+        List<Exhibition> exhibitions = exhibitionController.getAllExhibitions();
 
         model.addAttribute("museums", museums);
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        model.addAttribute("exhibitions", exhibitions);
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "homePage.html";
     }
@@ -79,12 +87,11 @@ public class HomePageControllerUI {
         List<Museum> museums = userController.getMuseumsFromCurrentUser();
         model.addAttribute("museums", museums);
 
-        try {
-            User user = userController.getCurrentLoggedInUserProfile();
-            model.addAttribute("user", user);
-        }catch (Exception e){}
+        topNavigationBarControllerUI.topNavigationBarController(request, model);
 
         return "museumRow.html";
     }
+
+
 
 }
