@@ -37,7 +37,7 @@
             <div class="info" id="dateOfBirth" th:text="${user.dateOfBirth}"></div>
           </div>
           <div class="title-info">Zip code
-            <div class="info" th:text="${user.zipCode}"></div>
+            <input type="number" class="info" th:field="*{zipCode}"></input>
           </div>
         <div id="list1" class="dropdown-check-list" tabindex="100">
           <span class="anchor">Select Tags</span>

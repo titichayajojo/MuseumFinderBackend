@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="museum_body">
-            <a href="#"><h2>Museums</h2></a>
+            <h2>Museums</h2>
             <div class="museum_content" th:each="museum: ${museums}" th:fragment="museumInfo(museum)">
                 <div class="museum_image"><a th:href="@{/museum/{id}/(id=${museum.id})}"><img th:src="@{${'/museum-images/' + museum.id + '/' + museum.imageURL}}"></a></div>
                 <div class="museum_info">

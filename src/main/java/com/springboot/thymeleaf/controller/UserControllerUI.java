@@ -46,6 +46,7 @@ public class UserControllerUI {
             model.addAttribute("role",role);
             return "userProfile.html";
         }catch (Exception e){
+            System.out.println(e + "\nabc");
             return "redirect:/login";
         }
     }
