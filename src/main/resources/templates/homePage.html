@@ -1,86 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Home Page</title>
-    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-    <link rel="stylesheet" th:href="@{/css/museumRow.css}">
-    <link rel="stylesheet" th:href="@{/css/homePage.css}">
-</head>
-<body>
-    <div th:insert="topNavigationBar :: navigationBar"></div>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Home Page</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+        <link
+                rel="stylesheet"
+                href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="/images/museum.png">
+        <link href="http://fonts.cdnfonts.com/css/chalkduster" rel="stylesheet">
+        <style>
+            .swiper-button-next, .swiper-button-prev{
+                margin-top: -6rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div th:insert="topNavigationBar :: navigationBar"></div>
 
-    <div class="slideshow-container">
+        <div class="slider">
+            <h2>Exhibitions</h2>
+            <div class="swiper mySwiper exh">
+                <div class="swiper-wrapper exh_card">
+                    <div class="swiper-slide exh_content" th:each="exhibition: ${exhibitions}">
+                        <a th:href="@{/exhibition/{id}/(id=${exhibition.id})}">
+                            <div class="img">
+                                <img th:src="@{${'/exhibition-images/' + exhibition.id + '/' + exhibition.fileName}}">
+                            </div>
 
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img class="banner" src="/images/banner/main1.jpg">
-        </div>
+                            <div class="exh_info">
+                                <p th:text="${exhibition.name}"></p>
+                                <p th:text="${exhibition.status}" th:if="${exhibition.status} == 'on going'" th:style="'color: green; text-transform: uppercase; font-weight:bold'"></p>
+                                <p th:text="${exhibition.status}" th:if="${exhibition.status} == 'over'" th:style="'color: red; text-transform: uppercase; font-weight:bold'"></p>
+                            </div>
+                        </a>
+                    </div>
 
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img class="banner" src="/images/banner/main2.jpg">
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img class="banner" src="/images/banner/main3.jpg">
-        </div>
-
-    </div>
-    <br>
-
-    <div style="text-align:center">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <h1 class="title">Exhibitions</h1>
-    <div style="border:1px solid black; overflow-x:scroll; overflow-y: hidden;  white-space: nowrap; margin: 2%;">
-        <div class="exhibition-container" th:each="exhibition: ${exhibitions}"  style ="width:500px; height:300px; display:inline-block;" >
-            <a th:href="@{/exhibition/{id}/(id=${exhibition.id})}">
-                <div class="exhibition" th:style="'height:300px; background-image:url(' + @{${'/exhibition-images/' + exhibition.id + '/' + exhibition.fileName}} + ');'">
-                    <div id= "name" class="exhibition-details" th:text="${exhibition.name}" />
-                    <div id= "Date" class="exhibition-details" th:text="${exhibition.startDate} + ' - ' + ${exhibition.endDate}" />
-                    <div class="exhibition-details" th:text="${exhibition.status}" th:if="${exhibition.status} == 'on going'" th:style="'color:green; font-size: large; font-weight: bold;'"/>
-                    <div class="exhibition-details" th:text="${exhibition.status}" th:if="${exhibition.status} == 'over'" th:style="'color:red; font-size: large; font-weight: bold;'"/>
                 </div>
-            </a>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
-    </div>
 
-    <h1 class="title">Museums</h1>
-    <form action="#" method="get" th:action="@{/}">
-        <button class="filter" th:if="${tag != null}" th:text="${tag}"></button>
-    </form>
-    <div class="museums-list">
-        <div class="museum-table" th:insert="museumRow :: museumInfo(museum)"></div>
-    </div>
+        <h2 class="tag_container">Filter:
+            <form action="#" method="get" th:action="@{/}">
+                <button class="heading_tag" th:if="${tag != null}" th:text="${tag}"></button>
+            </form>
+        </h2>
+        <div class="museums-list">
+            <div class="museum-table" th:insert="museumRow :: museumInfo(museum)"></div>
+        </div>
 
-</body>
-<script>
-let slideIndex = 0;
-showSlides();
-
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-
-</script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 3,
+                spaceBetween: 50,
+                slidesPerGroup: 3,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        </script>
+    </body>
 </html>

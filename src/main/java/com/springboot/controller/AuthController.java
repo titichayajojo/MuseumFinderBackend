@@ -106,7 +106,7 @@ public class AuthController {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
         catch(Exception e){
-            return new ResponseEntity<>("username and email are not matched", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Username and email are not matched!", HttpStatus.BAD_REQUEST);
         }
 
     }

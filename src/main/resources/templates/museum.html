@@ -1,60 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title th:text="${museum.name}"></title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-    <link rel="stylesheet" th:href="@{/css/museum.css}">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title th:text="${museum.name}"></title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="icon" type="image/png" href="/images/museum.png">
+        <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- google map -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
-<body>
+        <!-- google map -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    <body>
 
-<div th:insert="topNavigationBar :: navigationBar"></div>
+        <div th:insert="topNavigationBar :: navigationBar"></div>
 
-<div class="museum_page">
-    <div class="header">
-        <h2 th:text="${museum.name}"></h2>
-        <div class="header_tag">
-            <form action="#" method="get" th:each="tag: ${museum.tags}" th:action="@{/museums/{tag}(tag=${tag})}" th:object="${museums}">
-                <button class="tag_name"  th:text="${tag}"></button>
-            </form>
+        <div class="museum_page">
+            <div class="header">
+                <h2 th:text="${museum.name}"></h2>
+                <div class="header_tag">
+                    <form action="#" method="get" th:each="tag: ${museum.tags}" th:action="@{/museums/{tag}(tag=${tag})}" th:object="${museums}">
+                        <button class="tag_name"  th:text="${tag}"></button>
+                    </form>
+                </div>
+                <div class="header_image"><img th:src="@{${'/museum-images/' + museum.id + '/' + museum.imageURL}}"></div>
+            </div>
+
+            <div class="body">
+                <h3>Description</h3>
+                <div th:text="${museum.description}"></div>
+                <h3>Opening Hours</h3>
+                <div th:text="${museum.openingHours}"></div>
+                <h3>Email</h3>
+                <div th:text="${museum.email}"></div>
+                <h3>Phone number</h3>
+                <div th:text="${museum.phoneNumber}"></div>
+                <h3>Location</h3>
+                <div th:text="${museum.address}"></div>
+                <div id="map"></div>
+            </div>
         </div>
-        <div class="header_image"><img th:src="@{${'/museum-images/' + museum.id + '/' + museum.imageURL}}"></div>
-    </div>
 
-    <div class="body">
-        <h3>Description</h3>
-        <div th:text="${museum.description}"></div>
-        <h3>Opening Hours</h3>
-        <div th:text="${museum.openingHours}"></div>
-        <h3>Email</h3>
-        <div th:text="${museum.email}"></div>
-        <h3>Phone number</h3>
-        <div th:text="${museum.phoneNumber}"></div>
-        <h3>Location</h3>
-        <div th:text="${museum.address}"></div>
-        <div id="map"></div>
-    </div>
-</div>
+        <script th:inline="javascript">
+              /*<![CDATA[*/
+              function initMap() {
+                // The location of the map
+                var museum = { lat: /*[[${museum.latitude}]]*/, lng: /*[[${museum.longitude}]]*/ };
+                var map = new google.maps.Map(
+                  document.getElementById('map'), { zoom: 20, center: museum });
+                var marker = new google.maps.Marker({ position: museum, map: map });
+              }
+            /*]]>*/
+        </script>
 
-<script th:inline="javascript">
-      /*<![CDATA[*/
-      function initMap() {
-        // The location of the map
-        var museum = { lat: /*[[${museum.latitude}]]*/, lng: /*[[${museum.longitude}]]*/ };
-        var map = new google.maps.Map(
-          document.getElementById('map'), { zoom: 20, center: museum });
-        var marker = new google.maps.Marker({ position: museum, map: map });
-      }
-    /*]]>*/
-    </script>
+        <script  async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBnhw3pzsFD40rRTED-QGVYFdynD3jEaQ&callback=initMap" >
+        </script>
 
-<script  async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBnhw3pzsFD40rRTED-QGVYFdynD3jEaQ&callback=initMap" >
-</script>
-
-</body>
+    </body>
 </html>
