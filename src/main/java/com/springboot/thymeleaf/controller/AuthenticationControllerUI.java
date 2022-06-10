@@ -39,7 +39,7 @@ public class AuthenticationControllerUI {
             model.addAttribute("user",user);
             return "redirect:/";
         }catch (Exception e){
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("error", "Invalid username or password!");
             return "loginPage.html";
         }
 

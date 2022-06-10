@@ -49,6 +49,7 @@ public class UserController {
             userDetails.setTags((ArrayList<String>) tags);
             editCurrentUserTags(userDetails);
         }
+        if(userDetails.getZipCode() != 0) user.setZipCode(userDetails.getZipCode());
 
         final User updatedUser = userRepository.save(user);
 
