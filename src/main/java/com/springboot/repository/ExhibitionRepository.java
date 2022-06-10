@@ -3,6 +3,7 @@ package com.springboot.repository;
 import com.springboot.entity.Exhibition;
 import com.springboot.entity.Museum;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

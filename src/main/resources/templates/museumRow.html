@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Museum Row</title>
-    <link rel="stylesheet" th:href="@{/css/museumRow.css}">
-    <link rel="shortcut icon" type="image/png" href="museum.png">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Museum Row</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="shortcut icon" type="image/png" th:href="museum.png">
 
-</head>
-<body>
-    <div class="museum-container" th:each="museum: ${museums}" th:fragment="museumInfo(museum)">
-        <a th:href="@{/museum/{id}/(id=${museum.id})}">
-            <div class="museum-details" th:style="'background-image:url(' + @{${'/museum-images/' + museum.id + '/' + museum.imageURL}} + ');'">
-                <div id= "name" th:text="${museum.name}" />
-                <div class="hidden" id= "address" th:text="${museum.address}" />
-                <div class="tags-container">
-                    <div class="hidden" id= "tags" th:each="tag: ${museum.tags}">
-                        <form action="#" method="get" th:action="@{/museums/{tag}(tag=${tag})}" th:object="${museums}">
-                            <button class="hidden" th:text="${tag}"></button>
-                        </form>
-                    </div>
+    </head>
+    <body>
+        <div class="museum_body">
+            <h2>Museums</h2>
+            <div class="museum_content" th:each="museum: ${museums}" th:fragment="museumInfo(museum)">
+                <div class="museum_image"><a th:href="@{/museum/{id}/(id=${museum.id})}"><img th:src="@{${'/museum-images/' + museum.id + '/' + museum.imageURL}}"></a></div>
+                <div class="museum_info">
+                    <div class="museum_info name" th:text="${museum.name}" ></div>
+                    <div class="museum_info description" th:text="${museum.description}"></div>
+                    <span class="museum_info more"><a th:href="@{/museum/{id}/(id=${museum.id})}">Read more...</a></span>
+                    <div class="museum_tag_container"><span class="museum_tag_container text">Tag:</span><span class="scroller"><span class="tag" th:each="tag: ${museum.tags}"><a th:href="@{/museums/{tag}(tag=${tag})}" th:text="${tag}" th:object="${museums}"></a></span></span></div>
                 </div>
             </div>
-        </a>
-    </div>
-</body>
+        </div>
+    </body>
 </html>

@@ -48,7 +48,7 @@ public class ExhibitionControllerUI {
     }
 
     @RequestMapping(value = "/exhibition-add", method = GET)
-    public String CreateExhibitionPage(HttpServletRequest request, Model model){
+    public String CreateMuseumPage(HttpServletRequest request, Model model){
         List<Museum> museums = museumController.getAllMuseums();
         model.addAttribute("exhibition", new Exhibition());
         model.addAttribute("museums", museums);
@@ -59,7 +59,7 @@ public class ExhibitionControllerUI {
     }
 
     @RequestMapping(value = "/exhibition-add/created", method = POST)
-    public String CreateExhibitionMethod(HttpServletRequest request, Model model,Exhibition exhibitionDetails ,@RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String CreateMuseumMethod(HttpServletRequest request, Model model,Exhibition exhibitionDetails ,@RequestParam("image") MultipartFile multipartFile) throws IOException {
         Exhibition exhibition = (Exhibition) exhibitionController.createExhibition(exhibitionDetails).getBody();
         exhibitionController.addImage(exhibition.getId(),multipartFile);
 

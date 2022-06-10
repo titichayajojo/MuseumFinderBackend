@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Create Tag</title>
-  <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Create Tag</title>
+    <link rel="stylesheet" th:href="@{/css/create.css}">
+    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+    <link rel="icon" type="image/png" href="/images/museum.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .nav .search_bar {
+        margin-top: -5rem;
+      }
+    </style>
+  </head>
+  <body>
 
-<div th:insert="topNavigationBar :: navigationBar"></div>
+    <div th:insert="topNavigationBar :: navigationBar"></div>
 
-<div class="tags-container">
-  <div id= "tags" th:each="tag: ${tags}">
-      <div th:text="${tag.name}"></div>
-  </div>
-</div>
+    <div class="tag_creation">
+      <h3>Tags</h3>
+      <ul class="items">
+        <li th:each="tag: ${tags}" th:text="${tag.name}"></li>
+      </ul>
 
-  <form action="#" method="post" th:action="@{/tag-add/created}" th:object="${tag}" enctype="multipart/form-data">
-    <div>
-
-      <input class="input-field" type="text" placeholder="Tag name.." required="required" th:field="*{name}">
+      <form action="#" method="post" th:action="@{/tag-add/created}" th:object="${tag}" enctype="multipart/form-data">
+        <div  class="tag_create" >
+          <input type="text" placeholder="Tag name.." required="required" th:field="*{name}">
+        </div>
+        <button type="submit">Create</button>
+      </form>
     </div>
-    <button type="submit" id="create-btn">CREATE</button>
-  </form>
 
-<script>
-
-
-
-</script>
-
-</body>
+  </body>
 </html>

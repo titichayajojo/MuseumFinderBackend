@@ -1,91 +1,97 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Create Museum</title>
-    <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
-    <link rel="stylesheet" th:href="@{/css/create.css}">
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Create Museum</title>
+        <link rel="stylesheet" th:href="@{/css/create.css}">
+        <link rel="stylesheet" th:href="@{/css/topNavigationBar.css}">
+        <link rel="icon" type="image/png" href="/images/museum.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .nav .search_bar {
+                margin-top: -5rem;
+            }
+        </style>
+    </head>
+    <body>
 
-    <div th:insert="topNavigationBar :: navigationBar"></div>
+        <div th:insert="topNavigationBar :: navigationBar"></div>
 
-    <div class="create">
-        <div class="title">
-            <img src="/images/icons/home-plus.png">
-            <h2>Add New Museum</h2>
+        <div class="create">
+            <div class="title">
+                <img src="/images/icons/home-plus.png">
+                <h2>Add New Museum</h2>
+            </div>
+            <form action="#" method="post" th:action="@{/museum-add/created}" th:object="${museum}" enctype="multipart/form-data">
+                <div class="namdress">
+                    <div id="name">
+                        <label><h3>Museum Name</h3></label>
+                        <input type="text" placeholder="Museum name.." th:field="*{name}">
+                    </div>
+                    <div id="address">
+                        <label><h3>Address</h3></label>
+                        <input type="text" name="address" placeholder="Address..." th:field="*{address}">
+                    </div>
+                </div>
+                <div class="contact">
+                    <div id="mail">
+                        <label><h3>Email</h3></label>
+                        <input type="text" name="email" placeholder="Email..." required="required" th:field="*{email}">
+                    </div>
+                    <div id="tel">
+                        <label><h3>Phone number</h3></label>
+                        <input type="text" name="phoneNumber" placeholder="Museum Name..." th:field="*{phoneNumber}">
+                    </div>
+                </div>
+                <div class="des">
+                    <label><h3>Description</h3></label>
+                    <textarea name="description" placeholder="Description..." th:field="*{description}"></textarea>
+                </div>
+                <div class="hours">
+                    <label><h3>Opening hour</h3></label>
+                    <textarea name="openingHour" placeholder="Opening Hours..." th:field="*{openingHours}" ></textarea>
+                </div>
+                <div class="geographic">
+                    <div id="lat">
+                        <label><h3>Latitude</h3></label>
+                        <input type="text" name="latitude" placeholder="Latitude..." th:field="*{latitude}">
+                    </div>
+
+                    <div id="lon">
+                        <label><h3>Longitude</h3></label>
+                        <input type="text" name="longitude" placeholder="Longitude..." th:field="*{longitude}">
+                    </div>
+                </div>
+                <div class="selection">
+                    <h3>Choose tags for the new museum:</h3>
+                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor">Select Tags</span>
+                        <ul class="items">
+                            <li th:each="tag, itemStat: ${tags}"><input type="checkbox" th:text="${tag.name}"
+                                                                        th:value="${tag.name}"
+                                                                        th:name="|tags[${itemStat.index}]|"
+                                                                        th:id="${tag.name}"
+                                                                        th:field="*{tags[__${itemStat.index}__]}"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="select_img">
+                    <label><h3>Choose an image: </h3></label>
+                    <input type="file" name="image" accept="image/png, image/jpeg, image/jpg">
+                </div>
+                <button type="submit">Add</button>
+            </form>
         </div>
-        <form action="#" method="post" th:action="@{/museum-add/created}" th:object="${museum}" enctype="multipart/form-data">
-            <div class="namdress">
-                <div id="name">
-                    <label><h3>Museum Name</h3></label>
-                    <input type="text" placeholder="Museum name.." th:field="*{name}">
-                </div>
-                <div id="address">
-                    <label><h3>Address</h3></label>
-                    <input type="text" name="address" placeholder="Address..." th:field="*{address}">
-                </div>
-            </div>
-            <div class="contact">
-                <div id="mail">
-                    <label><h3>Email</h3></label>
-                    <input type="text" name="email" placeholder="Email..." required="required" th:field="*{email}">
-                </div>
-                <div id="tel">
-                    <label><h3>Phone number</h3></label>
-                    <input type="text" name="phoneNumber" placeholder="Museum Name..." th:field="*{phoneNumber}">
-                </div>
-            </div>
-            <div class="des">
-                <label><h3>Description</h3></label>
-                <textarea name="description" placeholder="Description..." th:field="*{description}"></textarea>
-            </div>
-            <div class="hours">
-                <label><h3>Opening hour</h3></label>
-                <textarea name="openingHour" placeholder="Opening Hours..." th:field="*{openingHours}" ></textarea>
-            </div>
-            <div class="geographic">
-                <div id="lat">
-                    <label><h3>Latitude</h3></label>
-                    <input type="text" name="latitude" placeholder="Latitude..." th:field="*{latitude}">
-                </div>
 
-                <div id="lon">
-                    <label><h3>Longitude</h3></label>
-                    <input type="text" name="longitude" placeholder="Longitude..." th:field="*{longitude}">
-                </div>
-            </div>
-            <div class="selection">
-                <h3>Choose tags for the new museum:</h3>
-                <div id="list1" class="dropdown-check-list" tabindex="100">
-                    <span class="anchor">Select Tags</span>
-                    <ul class="items">
-                        <li th:each="tag, itemStat: ${tags}"><input type="checkbox" th:text="${tag.name}"
-                                                                    th:value="${tag.name}"
-                                                                    th:name="|tags[${itemStat.index}]|"
-                                                                    th:id="${tag.name}"
-                                                                    th:field="*{tags[__${itemStat.index}__]}"/></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="museum_img">
-                <label><h3>Choose an image: </h3></label>
-                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg">
-            </div>
-            <button type="submit">Add</button>
-        </form>
-    </div>
+        <script type="text/javascript">
+            var checkList = document.getElementById('list1');
+            checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+                if (checkList.classList.contains('visible'))
+                    checkList.classList.remove('visible');
+                else
+                    checkList.classList.add('visible');
+            }
+        </script>
 
-    <script type="text/javascript">
-        var checkList = document.getElementById('list1');
-        checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-            if (checkList.classList.contains('visible'))
-                checkList.classList.remove('visible');
-            else
-                checkList.classList.add('visible');
-        }
-    </script>
-
-</body>
+    </body>
 </html>
