@@ -23,7 +23,6 @@
                 <header>
                     <h1>Register</h1>
                 </header>
-                <div id="error" th:object="${error}" th:if="${error != null}" th:text="${error}"></div>
                 <form id="form" action="#" method="post" th:action="@{/method/register}" th:object="${signupDto}">
                     <div class="input">
                         <label>First name</label>
